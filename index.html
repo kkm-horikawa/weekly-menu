@@ -1,0 +1,751 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>1週間 減量メニュー | 深夜トレーニング対応版</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&family=Zen+Maru+Gothic:wght@500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+    <style>
+        :root {
+            --primary-green: #2d5a27;
+            --light-green: #4a7c43;
+            --accent-orange: #e8723a;
+            --accent-purple: #6c5ce7;
+            --bg-cream: #faf8f5;
+            --text-dark: #1a1a1a;
+            --card-shadow: 0 8px 32px rgba(45, 90, 39, 0.12);
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Noto Sans JP', sans-serif; background: var(--bg-cream); color: var(--text-dark); line-height: 1.8; }
+        .hero { background: linear-gradient(135deg, var(--primary-green) 0%, var(--light-green) 100%); color: white; padding: 4rem 0 3rem; position: relative; overflow: hidden; }
+        .hero::before { content: ''; position: absolute; top: -50%; right: -20%; width: 600px; height: 600px; background: rgba(255,255,255,0.05); border-radius: 50%; }
+        .hero-title { font-family: 'Zen Maru Gothic', sans-serif; font-weight: 700; font-size: 2.5rem; margin-bottom: 0.5rem; }
+        .hero-subtitle { opacity: 0.9; font-size: 1.1rem; }
+        .hero-badge { display: inline-block; background: var(--accent-purple); padding: 0.4rem 1rem; border-radius: 20px; font-size: 0.85rem; margin-top: 0.5rem; }
+        .stats-bar { background: rgba(255,255,255,0.15); backdrop-filter: blur(10px); border-radius: 16px; padding: 1.5rem; margin-top: 2rem; }
+        .stat-item { text-align: center; }
+        .stat-value { font-size: 1.8rem; font-weight: 700; }
+        .stat-label { font-size: 0.85rem; opacity: 0.85; }
+        .day-nav { background: white; padding: 1rem 0; position: sticky; top: 0; z-index: 100; box-shadow: 0 4px 20px rgba(0,0,0,0.08); }
+        .nav-pills .nav-link { color: var(--text-dark); font-weight: 500; padding: 0.75rem 1.25rem; border-radius: 50px; margin: 0 0.25rem; transition: all 0.3s ease; position: relative; }
+        .nav-pills .nav-link:hover { background: rgba(45, 90, 39, 0.1); }
+        .nav-pills .nav-link.active { background: var(--primary-green); color: white; }
+        .nav-pills .nav-link.gym-day::after { content: '💪'; position: absolute; top: -8px; right: -5px; font-size: 0.7rem; }
+        .content-section { padding: 3rem 0; }
+        .day-type-badge { display: inline-block; padding: 0.3rem 0.8rem; border-radius: 15px; font-size: 0.8rem; font-weight: 600; margin-left: 1rem; }
+        .badge-gym { background: linear-gradient(135deg, var(--accent-purple), #a29bfe); color: white; }
+        .badge-rest { background: #dfe6e9; color: #636e72; }
+        .badge-off { background: #ffeaa7; color: #d63031; }
+        .meal-card { background: white; border-radius: 20px; padding: 1.75rem; margin-bottom: 1.5rem; box-shadow: var(--card-shadow); border: none; transition: transform 0.3s ease, box-shadow 0.3s ease; }
+        .meal-card:hover { transform: translateY(-4px); box-shadow: 0 12px 40px rgba(45, 90, 39, 0.18); }
+        .meal-card.gym-card { border-left: 4px solid var(--accent-purple); background: linear-gradient(135deg, #f8f7ff, #fff); }
+        .meal-header { display: flex; align-items: center; margin-bottom: 1.25rem; }
+        .meal-icon { width: 50px; height: 50px; border-radius: 14px; display: flex; align-items: center; justify-content: center; font-size: 1.5rem; margin-right: 1rem; }
+        .meal-icon.morning { background: linear-gradient(135deg, #ffecd2, #fcb69f); }
+        .meal-icon.lunch { background: linear-gradient(135deg, #a8edea, #fed6e3); }
+        .meal-icon.dinner { background: linear-gradient(135deg, #667eea, #764ba2); color: white; }
+        .meal-icon.post-gym { background: linear-gradient(135deg, #6c5ce7, #a29bfe); color: white; }
+        .meal-time { font-size: 0.8rem; color: #888; font-weight: 500; }
+        .meal-title { font-weight: 700; font-size: 1.1rem; color: var(--text-dark); }
+        .meal-description { color: #555; margin-bottom: 1rem; font-size: 0.95rem; }
+        .meal-items { list-style: none; padding: 0; margin: 0; }
+        .meal-items li { padding: 0.5rem 0; border-bottom: 1px dashed #eee; display: flex; justify-content: space-between; align-items: center; }
+        .meal-items li:last-child { border-bottom: none; }
+        .item-name { display: flex; align-items: center; gap: 0.5rem; }
+        .item-emoji { font-size: 1.2rem; }
+        .item-protein { background: var(--primary-green); color: white; padding: 0.2rem 0.6rem; border-radius: 20px; font-size: 0.75rem; font-weight: 600; }
+        .nutrition-summary { background: linear-gradient(135deg, var(--primary-green), var(--light-green)); color: white; border-radius: 16px; padding: 1.5rem; margin-top: 1rem; }
+        .nutrition-title { font-weight: 700; margin-bottom: 1rem; font-size: 1rem; }
+        .nutrition-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; text-align: center; }
+        .nutrition-item-value { font-size: 1.5rem; font-weight: 700; }
+        .nutrition-item-label { font-size: 0.75rem; opacity: 0.85; }
+        .schedule-card { background: white; border-radius: 20px; padding: 1.5rem; margin-bottom: 1.5rem; box-shadow: var(--card-shadow); }
+        .schedule-title { font-family: 'Zen Maru Gothic', sans-serif; font-weight: 700; font-size: 1.1rem; margin-bottom: 1rem; display: flex; align-items: center; gap: 0.5rem; }
+        .schedule-grid { display: grid; grid-template-columns: repeat(7, 1fr); gap: 0.5rem; text-align: center; }
+        .schedule-day { padding: 0.75rem 0.25rem; border-radius: 10px; font-size: 0.8rem; }
+        .schedule-day.gym { background: linear-gradient(135deg, var(--accent-purple), #a29bfe); color: white; font-weight: 700; }
+        .schedule-day.rest { background: #f1f2f6; color: #636e72; }
+        .schedule-day.off { background: #ffeaa7; color: #d63031; }
+        .schedule-day-label { font-weight: 700; margin-bottom: 0.25rem; }
+        .schedule-day-type { font-size: 0.7rem; }
+        .tips-card { background: linear-gradient(135deg, #fff9e6, #fff3cd); border-radius: 16px; padding: 1.5rem; border-left: 4px solid var(--accent-orange); margin-bottom: 1.5rem; }
+        .tips-title { font-weight: 700; color: var(--accent-orange); margin-bottom: 0.75rem; display: flex; align-items: center; gap: 0.5rem; }
+        .tips-list { margin: 0; padding-left: 1.25rem; }
+        .tips-list li { margin-bottom: 0.5rem; color: #555; }
+        .night-tips-card .tips-list li { color: rgba(255,255,255,0.9); }
+        .night-tips-card .tips-list li strong { color: #fff; }
+        .night-tips-card { background: linear-gradient(135deg, #2d3436, #636e72); color: white; border-radius: 16px; padding: 1.5rem; margin-bottom: 1.5rem; }
+        .night-tips-title { font-weight: 700; margin-bottom: 0.75rem; display: flex; align-items: center; gap: 0.5rem; }
+        .shopping-section { background: white; border-radius: 20px; padding: 2rem; margin-top: 1rem; box-shadow: var(--card-shadow); }
+        .shopping-title { font-family: 'Zen Maru Gothic', sans-serif; font-weight: 700; font-size: 1.3rem; margin-bottom: 1.5rem; display: flex; align-items: center; gap: 0.5rem; }
+        .shopping-category { margin-bottom: 1.5rem; }
+        .category-title { font-weight: 600; color: var(--primary-green); margin-bottom: 0.75rem; font-size: 0.9rem; text-transform: uppercase; letter-spacing: 0.5px; }
+        .shopping-items { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+        .shopping-item { background: var(--bg-cream); padding: 0.5rem 1rem; border-radius: 25px; font-size: 0.9rem; display: flex; align-items: center; gap: 0.5rem; }
+        .quick-badge { background: var(--accent-orange); color: white; font-size: 0.7rem; padding: 0.2rem 0.5rem; border-radius: 10px; margin-left: 0.5rem; font-weight: 600; }
+        .recipe-steps { background: #f8f9fa; border-radius: 12px; padding: 1rem 1.25rem; margin-top: 1rem; border-left: 3px solid var(--accent-orange); }
+        .recipe-steps-title { font-weight: 700; font-size: 0.85rem; color: var(--accent-orange); margin-bottom: 0.5rem; display: flex; align-items: center; gap: 0.3rem; }
+        .recipe-steps ol { margin: 0; padding-left: 1.25rem; font-size: 0.9rem; color: #444; }
+        .recipe-steps ol li { margin-bottom: 0.4rem; }
+        .footer { background: var(--primary-green); color: white; padding: 2rem 0; margin-top: 3rem; text-align: center; }
+        @media (max-width: 768px) {
+            .hero-title { font-size: 1.8rem; }
+            .nav-pills .nav-link { padding: 0.5rem 0.75rem; font-size: 0.85rem; }
+            .schedule-grid { grid-template-columns: repeat(7, 1fr); gap: 0.25rem; }
+            .schedule-day { padding: 0.5rem 0.1rem; font-size: 0.7rem; }
+            .stats-bar .row { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1rem; }
+            .stats-bar .col-3 { width: 100%; max-width: 100%; }
+            .stat-value { font-size: 1.4rem; }
+            .stat-label { font-size: 0.75rem; }
+        }
+    </style>
+</head>
+<body>
+    <section class="hero">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-8">
+                    <h1 class="hero-title"><i class="bi bi-fire me-2"></i>1週間 減量メニュー</h1>
+                    <p class="hero-subtitle">筋肉を守りながら脂肪を落とす | 休日調理・平日買うだけ対応版</p>
+                    <span class="hero-badge"><i class="bi bi-moon-stars me-1"></i>深夜トレーニング対応版</span>
+                    <div class="stats-bar">
+                        <div class="row">
+                            <div class="col-3 stat-item"><div class="stat-value">~1,800</div><div class="stat-label">kcal/日</div></div>
+                            <div class="col-3 stat-item"><div class="stat-value">120-140g</div><div class="stat-label">タンパク質/日</div></div>
+                            <div class="col-3 stat-item"><div class="stat-value">週3回</div><div class="stat-label">日・火・木</div></div>
+                            <div class="col-3 stat-item"><div class="stat-value">6ヶ月</div><div class="stat-label">-15kg目標</div></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <nav class="day-nav">
+        <div class="container">
+            <ul class="nav nav-pills justify-content-center flex-nowrap overflow-auto" id="dayTabs" role="tablist">
+                <li class="nav-item" role="presentation"><button class="nav-link gym-day active" id="sun-tab" data-bs-toggle="pill" data-bs-target="#sunday" type="button">日</button></li>
+                <li class="nav-item" role="presentation"><button class="nav-link" id="mon-tab" data-bs-toggle="pill" data-bs-target="#monday" type="button">月</button></li>
+                <li class="nav-item" role="presentation"><button class="nav-link gym-day" id="tue-tab" data-bs-toggle="pill" data-bs-target="#tuesday" type="button">火</button></li>
+                <li class="nav-item" role="presentation"><button class="nav-link" id="wed-tab" data-bs-toggle="pill" data-bs-target="#wednesday" type="button">水</button></li>
+                <li class="nav-item" role="presentation"><button class="nav-link gym-day" id="thu-tab" data-bs-toggle="pill" data-bs-target="#thursday" type="button">木</button></li>
+                <li class="nav-item" role="presentation"><button class="nav-link" id="fri-tab" data-bs-toggle="pill" data-bs-target="#friday" type="button">金</button></li>
+                <li class="nav-item" role="presentation"><button class="nav-link" id="sat-tab" data-bs-toggle="pill" data-bs-target="#saturday" type="button">土</button></li>
+            </ul>
+        </div>
+    </nav>
+
+    <section class="content-section">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8">
+                    <div class="tab-content" id="dayTabContent">
+                        
+                        <!-- Sunday - GYM -->
+                        <div class="tab-pane fade show active" id="sunday" role="tabpanel">
+                            <h2 class="mb-4" style="font-family: 'Zen Maru Gothic', sans-serif; font-weight: 700;">
+                                <span style="color: var(--accent-purple);">日曜日</span>
+                                <span class="day-type-badge badge-gym">🏋️ ジムの日</span>
+                            </h2>
+                            <div class="meal-card">
+                                <div class="meal-header">
+                                    <div class="meal-icon morning">🌅</div>
+                                    <div><div class="meal-time">朝 9:00〜10:00</div><div class="meal-title">休日の朝食</div></div>
+                                    <span class="quick-badge ms-auto">5分</span>
+                                </div>
+                                <ul class="meal-items">
+                                    <li><span class="item-name"><span class="item-emoji">🥣</span>オートミール 40g</span><span class="item-protein">5g</span></li>
+                                    <li><span class="item-name"><span class="item-emoji">🥚</span>目玉焼き 2個</span><span class="item-protein">12g</span></li>
+                                    <li><span class="item-name"><span class="item-emoji">🥛</span>ギリシャヨーグルト</span><span class="item-protein">12g</span></li>
+                                </ul>
+                                <div class="recipe-steps">
+                                    <div class="recipe-steps-title">🍳 作り方</div>
+                                    <ol>
+                                        <li>オートミール40gに水150mlを入れ、レンジ600W×1分半</li>
+                                        <li>フライパンに油を薄くひき、卵2個を割り入れる</li>
+                                        <li>蓋をして弱火で2〜3分、白身が固まったら完成</li>
+                                        <li>ヨーグルトは開けるだけ！</li>
+                                    </ol>
+                                </div>
+                            </div>
+                            <div class="meal-card">
+                                <div class="meal-header">
+                                    <div class="meal-icon lunch">☀️</div>
+                                    <div><div class="meal-time">昼 13:00〜14:00</div><div class="meal-title">サバ缶キムチ丼＋卵</div></div>
+                                    <span class="quick-badge ms-auto">5分</span>
+                                </div>
+                                <ul class="meal-items">
+                                    <li><span class="item-name"><span class="item-emoji">🐟</span>サバ水煮缶 1缶</span><span class="item-protein">20g</span></li>
+                                    <li><span class="item-name"><span class="item-emoji">🥬</span>キムチ</span><span class="item-protein">1g</span></li>
+                                    <li><span class="item-name"><span class="item-emoji">🥚</span>温泉卵 2個</span><span class="item-protein">12g</span></li>
+                                    <li><span class="item-name"><span class="item-emoji">🍚</span>玄米ご飯 小盛り</span><span class="item-protein">3g</span></li>
+                                </ul>
+                                <div class="recipe-steps">
+                                    <div class="recipe-steps-title">🍳 作り方</div>
+                                    <ol>
+                                        <li>ご飯を器に盛る（冷凍ご飯ならレンジで解凍）</li>
+                                        <li>サバ缶を汁ごとご飯の上にのせる</li>
+                                        <li>キムチをのせ、温泉卵を落とす</li>
+                                        <li>ごま油少々＋醤油をかけて完成！</li>
+                                    </ol>
+                                </div>
+                            </div>
+                            <div class="meal-card">
+                                <div class="meal-header">
+                                    <div class="meal-icon dinner">🌙</div>
+                                    <div><div class="meal-time">夜 19:00〜20:00</div><div class="meal-title">レンジ蒸し鶏むね肉</div></div>
+                                    <span class="quick-badge ms-auto">10分</span>
+                                </div>
+                                <p class="meal-description">休日はしっかり調理！ジム4時間前に食べ終える</p>
+                                <ul class="meal-items">
+                                    <li><span class="item-name"><span class="item-emoji">🐔</span>鶏むね肉 200g</span><span class="item-protein">48g</span></li>
+                                    <li><span class="item-name"><span class="item-emoji">🥦</span>冷凍ブロッコリー</span><span class="item-protein">4g</span></li>
+                                    <li><span class="item-name"><span class="item-emoji">🍲</span>インスタント味噌汁</span><span class="item-protein">2g</span></li>
+                                </ul>
+                                <div class="recipe-steps">
+                                    <div class="recipe-steps-title">🍳 作り方</div>
+                                    <ol>
+                                        <li>鶏むね肉にフォークで穴を開ける（火が通りやすくなる）</li>
+                                        <li>耐熱皿に肉を置き、酒大さじ1・塩少々をふる</li>
+                                        <li>ふんわりラップしてレンジ600W×5分</li>
+                                        <li>そのまま3分放置（余熱で中まで火を通す）</li>
+                                        <li>スライスしてポン酢で食べる！ブロッコリーはレンジ2分</li>
+                                    </ol>
+                                </div>
+                            </div>
+                            <div class="meal-card gym-card">
+                                <div class="meal-header">
+                                    <div class="meal-icon post-gym">💪</div>
+                                    <div><div class="meal-time">深夜 1:00〜1:30（ジム後すぐ）</div><div class="meal-title">トレーニング後のプロテイン</div></div>
+                                </div>
+                                <p class="meal-description">飲んだらすぐ寝る！30分以内に就寝</p>
+                                <ul class="meal-items">
+                                    <li><span class="item-name"><span class="item-emoji">🥤</span>プロテイン 1杯</span><span class="item-protein">20g</span></li>
+                                </ul>
+                            </div>
+                            <div class="nutrition-summary">
+                                <div class="nutrition-title"><i class="bi bi-graph-up me-2"></i>本日の栄養素</div>
+                                <div class="nutrition-grid">
+                                    <div><div class="nutrition-item-value">~1,750</div><div class="nutrition-item-label">kcal</div></div>
+                                    <div><div class="nutrition-item-value">138g</div><div class="nutrition-item-label">タンパク質</div></div>
+                                    <div><div class="nutrition-item-value">~40g</div><div class="nutrition-item-label">脂質</div></div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Monday - REST -->
+                        <div class="tab-pane fade" id="monday" role="tabpanel">
+                            <h2 class="mb-4" style="font-family: 'Zen Maru Gothic', sans-serif; font-weight: 700;">
+                                <span style="color: var(--primary-green);">月曜日</span>
+                                <span class="day-type-badge badge-rest">😴 回復日</span>
+                            </h2>
+                            <div class="meal-card">
+                                <div class="meal-header">
+                                    <div class="meal-icon morning">🌅</div>
+                                    <div><div class="meal-time">朝 7:00〜8:00</div><div class="meal-title">回復のための朝食</div></div>
+                                    <span class="quick-badge ms-auto">2分</span>
+                                </div>
+                                <p class="meal-description">昨夜のトレーニングからの回復を促進</p>
+                                <ul class="meal-items">
+                                    <li><span class="item-name"><span class="item-emoji">🥛</span>ギリシャヨーグルト</span><span class="item-protein">12g</span></li>
+                                    <li><span class="item-name"><span class="item-emoji">🥚</span>ゆで卵 2個（コンビニ）</span><span class="item-protein">13g</span></li>
+                                    <li><span class="item-name"><span class="item-emoji">🍌</span>バナナ 1本</span><span class="item-protein">1g</span></li>
+                                </ul>
+                            </div>
+                            <div class="meal-card">
+                                <div class="meal-header">
+                                    <div class="meal-icon lunch">☀️</div>
+                                    <div><div class="meal-time">昼 12:00〜13:00</div><div class="meal-title">サラダチキン定食</div></div>
+                                    <span class="quick-badge ms-auto">買うだけ</span>
+                                </div>
+                                <ul class="meal-items">
+                                    <li><span class="item-name"><span class="item-emoji">🍗</span>サラダチキン</span><span class="item-protein">24g</span></li>
+                                    <li><span class="item-name"><span class="item-emoji">🍙</span>玄米おにぎり 1個</span><span class="item-protein">3g</span></li>
+                                    <li><span class="item-name"><span class="item-emoji">🥗</span>カット野菜サラダ</span><span class="item-protein">1g</span></li>
+                                </ul>
+                            </div>
+                            <div class="meal-card">
+                                <div class="meal-header">
+                                    <div class="meal-icon dinner">🌙</div>
+                                    <div><div class="meal-time">夜 23:00〜23:30</div><div class="meal-title">コンビニ高タンパク定食</div></div>
+                                    <span class="quick-badge ms-auto">買うだけ</span>
+                                </div>
+                                <p class="meal-description">回復日はしっかり食べてOK</p>
+                                <ul class="meal-items">
+                                    <li><span class="item-name"><span class="item-emoji">🍱</span>タンパク質が摂れる弁当</span><span class="item-protein">30g</span></li>
+                                    <li><span class="item-name"><span class="item-emoji">🥚</span>ゆで卵 2個</span><span class="item-protein">13g</span></li>
+                                    <li><span class="item-name"><span class="item-emoji">🥗</span>サラダ</span><span class="item-protein">2g</span></li>
+                                </ul>
+                            </div>
+                            <div class="meal-card">
+                                <div class="meal-header">
+                                    <div class="meal-icon post-gym">🥛</div>
+                                    <div><div class="meal-time">間食</div><div class="meal-title">プロテイン補給</div></div>
+                                </div>
+                                <ul class="meal-items">
+                                    <li><span class="item-name"><span class="item-emoji">🥤</span>プロテイン 1杯</span><span class="item-protein">20g</span></li>
+                                </ul>
+                            </div>
+                            <div class="nutrition-summary">
+                                <div class="nutrition-title"><i class="bi bi-graph-up me-2"></i>本日の栄養素</div>
+                                <div class="nutrition-grid">
+                                    <div><div class="nutrition-item-value">~1,700</div><div class="nutrition-item-label">kcal</div></div>
+                                    <div><div class="nutrition-item-value">119g</div><div class="nutrition-item-label">タンパク質</div></div>
+                                    <div><div class="nutrition-item-value">~45g</div><div class="nutrition-item-label">脂質</div></div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Tuesday - GYM -->
+                        <div class="tab-pane fade" id="tuesday" role="tabpanel">
+                            <h2 class="mb-4" style="font-family: 'Zen Maru Gothic', sans-serif; font-weight: 700;">
+                                <span style="color: var(--accent-purple);">火曜日</span>
+                                <span class="day-type-badge badge-gym">🏋️ ジムの日</span>
+                            </h2>
+                            <div class="meal-card">
+                                <div class="meal-header">
+                                    <div class="meal-icon morning">🌅</div>
+                                    <div><div class="meal-time">朝 7:00〜8:00</div><div class="meal-title">卵かけご飯＋納豆</div></div>
+                                    <span class="quick-badge ms-auto">3分</span>
+                                </div>
+                                <ul class="meal-items">
+                                    <li><span class="item-name"><span class="item-emoji">🥚</span>卵 2個</span><span class="item-protein">12g</span></li>
+                                    <li><span class="item-name"><span class="item-emoji">🫘</span>納豆 1パック</span><span class="item-protein">7g</span></li>
+                                    <li><span class="item-name"><span class="item-emoji">🍚</span>玄米ご飯 小盛り</span><span class="item-protein">3g</span></li>
+                                </ul>
+                                <div class="recipe-steps">
+                                    <div class="recipe-steps-title">🍳 作り方</div>
+                                    <ol>
+                                        <li>ご飯を温める（冷凍ならレンジ2分）</li>
+                                        <li>卵を割り入れて醤油をかけて混ぜる</li>
+                                        <li>納豆をのせて完成！</li>
+                                    </ol>
+                                </div>
+                            </div>
+                            <div class="meal-card">
+                                <div class="meal-header">
+                                    <div class="meal-icon lunch">☀️</div>
+                                    <div><div class="meal-time">昼 12:00〜13:00</div><div class="meal-title">ツナ缶サラダ＋プロテインバー</div></div>
+                                    <span class="quick-badge ms-auto">3分</span>
+                                </div>
+                                <ul class="meal-items">
+                                    <li><span class="item-name"><span class="item-emoji">🐟</span>ツナ缶（ノンオイル）2缶</span><span class="item-protein">26g</span></li>
+                                    <li><span class="item-name"><span class="item-emoji">🥗</span>カット野菜</span><span class="item-protein">1g</span></li>
+                                    <li><span class="item-name"><span class="item-emoji">🥚</span>ゆで卵 2個</span><span class="item-protein">13g</span></li>
+                                    <li><span class="item-name"><span class="item-emoji">🍫</span>プロテインバー</span><span class="item-protein">15g</span></li>
+                                </ul>
+                            </div>
+                            <div class="meal-card">
+                                <div class="meal-header">
+                                    <div class="meal-icon dinner">🌙</div>
+                                    <div><div class="meal-time">夜 23:00〜23:30</div><div class="meal-title">【ジム前】コンビニ軽食</div></div>
+                                    <span class="quick-badge ms-auto">買うだけ</span>
+                                </div>
+                                <p class="meal-description">ジム1時間前なので消化の良いものを</p>
+                                <ul class="meal-items">
+                                    <li><span class="item-name"><span class="item-emoji">🍗</span>サラダチキン スモーク</span><span class="item-protein">24g</span></li>
+                                    <li><span class="item-name"><span class="item-emoji">🍙</span>鮭おにぎり 1個</span><span class="item-protein">5g</span></li>
+                                </ul>
+                            </div>
+                            <div class="meal-card gym-card">
+                                <div class="meal-header">
+                                    <div class="meal-icon post-gym">💪</div>
+                                    <div><div class="meal-time">深夜 1:00〜1:30（ジム後すぐ）</div><div class="meal-title">トレーニング後のプロテイン</div></div>
+                                </div>
+                                <p class="meal-description">飲んだらすぐ寝る！30分以内に就寝</p>
+                                <ul class="meal-items">
+                                    <li><span class="item-name"><span class="item-emoji">🥤</span>プロテイン 1杯</span><span class="item-protein">20g</span></li>
+                                </ul>
+                            </div>
+                            <div class="nutrition-summary">
+                                <div class="nutrition-title"><i class="bi bi-graph-up me-2"></i>本日の栄養素</div>
+                                <div class="nutrition-grid">
+                                    <div><div class="nutrition-item-value">~1,600</div><div class="nutrition-item-label">kcal</div></div>
+                                    <div><div class="nutrition-item-value">126g</div><div class="nutrition-item-label">タンパク質</div></div>
+                                    <div><div class="nutrition-item-value">~40g</div><div class="nutrition-item-label">脂質</div></div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Wednesday - REST -->
+                        <div class="tab-pane fade" id="wednesday" role="tabpanel">
+                            <h2 class="mb-4" style="font-family: 'Zen Maru Gothic', sans-serif; font-weight: 700;">
+                                <span style="color: var(--primary-green);">水曜日</span>
+                                <span class="day-type-badge badge-rest">😴 回復日</span>
+                            </h2>
+                            <div class="meal-card">
+                                <div class="meal-header">
+                                    <div class="meal-icon morning">🌅</div>
+                                    <div><div class="meal-time">朝 7:00〜8:00</div><div class="meal-title">プロテイン＋納豆</div></div>
+                                    <span class="quick-badge ms-auto">2分</span>
+                                </div>
+                                <ul class="meal-items">
+                                    <li><span class="item-name"><span class="item-emoji">🥤</span>プロテイン 1杯</span><span class="item-protein">20g</span></li>
+                                    <li><span class="item-name"><span class="item-emoji">🫘</span>納豆 1パック</span><span class="item-protein">7g</span></li>
+                                </ul>
+                            </div>
+                            <div class="meal-card">
+                                <div class="meal-header">
+                                    <div class="meal-icon lunch">☀️</div>
+                                    <div><div class="meal-time">昼 12:00〜13:00</div><div class="meal-title">コンビニ高タンパク弁当</div></div>
+                                    <span class="quick-badge ms-auto">買うだけ</span>
+                                </div>
+                                <ul class="meal-items">
+                                    <li><span class="item-name"><span class="item-emoji">🍱</span>タンパク質が摂れる弁当</span><span class="item-protein">30g</span></li>
+                                    <li><span class="item-name"><span class="item-emoji">🥛</span>無調整豆乳 200ml</span><span class="item-protein">8g</span></li>
+                                </ul>
+                            </div>
+                            <div class="meal-card">
+                                <div class="meal-header">
+                                    <div class="meal-icon dinner">🌙</div>
+                                    <div><div class="meal-time">夜 23:00〜23:30</div><div class="meal-title">スーパーの刺身パック</div></div>
+                                    <span class="quick-badge ms-auto">買うだけ</span>
+                                </div>
+                                <p class="meal-description">帰りにスーパー寄って半額刺身ゲット！</p>
+                                <ul class="meal-items">
+                                    <li><span class="item-name"><span class="item-emoji">🍣</span>刺身盛り合わせ</span><span class="item-protein">30g</span></li>
+                                    <li><span class="item-name"><span class="item-emoji">🧊</span>パック冷奴</span><span class="item-protein">10g</span></li>
+                                    <li><span class="item-name"><span class="item-emoji">🥗</span>もずく酢</span><span class="item-protein">1g</span></li>
+                                </ul>
+                            </div>
+                            <div class="meal-card">
+                                <div class="meal-header">
+                                    <div class="meal-icon post-gym">🥛</div>
+                                    <div><div class="meal-time">間食</div><div class="meal-title">タンパク質補給</div></div>
+                                </div>
+                                <ul class="meal-items">
+                                    <li><span class="item-name"><span class="item-emoji">🍫</span>プロテインバー</span><span class="item-protein">15g</span></li>
+                                </ul>
+                            </div>
+                            <div class="nutrition-summary">
+                                <div class="nutrition-title"><i class="bi bi-graph-up me-2"></i>本日の栄養素</div>
+                                <div class="nutrition-grid">
+                                    <div><div class="nutrition-item-value">~1,550</div><div class="nutrition-item-label">kcal</div></div>
+                                    <div><div class="nutrition-item-value">131g</div><div class="nutrition-item-label">タンパク質</div></div>
+                                    <div><div class="nutrition-item-value">~35g</div><div class="nutrition-item-label">脂質</div></div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Thursday - GYM -->
+                        <div class="tab-pane fade" id="thursday" role="tabpanel">
+                            <h2 class="mb-4" style="font-family: 'Zen Maru Gothic', sans-serif; font-weight: 700;">
+                                <span style="color: var(--accent-purple);">木曜日</span>
+                                <span class="day-type-badge badge-gym">🏋️ ジムの日</span>
+                            </h2>
+                            <div class="meal-card">
+                                <div class="meal-header">
+                                    <div class="meal-icon morning">🌅</div>
+                                    <div><div class="meal-time">朝 7:00〜8:00</div><div class="meal-title">ヨーグルト＋ゆで卵</div></div>
+                                    <span class="quick-badge ms-auto">1分</span>
+                                </div>
+                                <ul class="meal-items">
+                                    <li><span class="item-name"><span class="item-emoji">🥛</span>ギリシャヨーグルト</span><span class="item-protein">12g</span></li>
+                                    <li><span class="item-name"><span class="item-emoji">🥚</span>ゆで卵 2個</span><span class="item-protein">13g</span></li>
+                                </ul>
+                            </div>
+                            <div class="meal-card">
+                                <div class="meal-header">
+                                    <div class="meal-icon lunch">☀️</div>
+                                    <div><div class="meal-time">昼 12:00〜13:00</div><div class="meal-title">サバ缶定食＋プロテイン</div></div>
+                                    <span class="quick-badge ms-auto">3分</span>
+                                </div>
+                                <ul class="meal-items">
+                                    <li><span class="item-name"><span class="item-emoji">🐟</span>サバ水煮缶 1缶</span><span class="item-protein">20g</span></li>
+                                    <li><span class="item-name"><span class="item-emoji">🍚</span>玄米ご飯 小盛り</span><span class="item-protein">3g</span></li>
+                                    <li><span class="item-name"><span class="item-emoji">🥬</span>キムチ</span><span class="item-protein">1g</span></li>
+                                    <li><span class="item-name"><span class="item-emoji">🥤</span>プロテイン 1杯</span><span class="item-protein">20g</span></li>
+                                </ul>
+                            </div>
+                            <div class="meal-card">
+                                <div class="meal-header">
+                                    <div class="meal-icon dinner">🌙</div>
+                                    <div><div class="meal-time">夜 23:00〜23:30</div><div class="meal-title">【ジム前】コンビニ軽食</div></div>
+                                    <span class="quick-badge ms-auto">買うだけ</span>
+                                </div>
+                                <p class="meal-description">週後半のご褒美！ちょっといいサラダチキン</p>
+                                <ul class="meal-items">
+                                    <li><span class="item-name"><span class="item-emoji">🍗</span>サラダチキン ハーブ</span><span class="item-protein">24g</span></li>
+                                    <li><span class="item-name"><span class="item-emoji">🍙</span>焼き鮭おにぎり</span><span class="item-protein">5g</span></li>
+                                    <li><span class="item-name"><span class="item-emoji">🍌</span>バナナ 1本</span><span class="item-protein">1g</span></li>
+                                </ul>
+                            </div>
+                            <div class="meal-card gym-card">
+                                <div class="meal-header">
+                                    <div class="meal-icon post-gym">💪</div>
+                                    <div><div class="meal-time">深夜 1:00〜1:30（ジム後すぐ）</div><div class="meal-title">トレーニング後のプロテイン</div></div>
+                                </div>
+                                <p class="meal-description">飲んだらすぐ寝る！30分以内に就寝</p>
+                                <ul class="meal-items">
+                                    <li><span class="item-name"><span class="item-emoji">🥤</span>プロテイン 1杯</span><span class="item-protein">20g</span></li>
+                                </ul>
+                            </div>
+                            <div class="nutrition-summary">
+                                <div class="nutrition-title"><i class="bi bi-graph-up me-2"></i>本日の栄養素</div>
+                                <div class="nutrition-grid">
+                                    <div><div class="nutrition-item-value">~1,600</div><div class="nutrition-item-label">kcal</div></div>
+                                    <div><div class="nutrition-item-value">119g</div><div class="nutrition-item-label">タンパク質</div></div>
+                                    <div><div class="nutrition-item-value">~40g</div><div class="nutrition-item-label">脂質</div></div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Friday - OFF -->
+                        <div class="tab-pane fade" id="friday" role="tabpanel">
+                            <h2 class="mb-4" style="font-family: 'Zen Maru Gothic', sans-serif; font-weight: 700;">
+                                <span style="color: #d63031;">金曜日</span>
+                                <span class="day-type-badge badge-off">🚫 ジム不可日</span>
+                            </h2>
+                            <div class="meal-card">
+                                <div class="meal-header">
+                                    <div class="meal-icon morning">🌅</div>
+                                    <div><div class="meal-time">朝 7:00〜8:00</div><div class="meal-title">スクランブルエッグ</div></div>
+                                    <span class="quick-badge ms-auto">5分</span>
+                                </div>
+                                <ul class="meal-items">
+                                    <li><span class="item-name"><span class="item-emoji">🥚</span>卵 3個</span><span class="item-protein">18g</span></li>
+                                    <li><span class="item-name"><span class="item-emoji">🧀</span>チーズ 1枚</span><span class="item-protein">4g</span></li>
+                                </ul>
+                                <div class="recipe-steps">
+                                    <div class="recipe-steps-title">🍳 作り方</div>
+                                    <ol>
+                                        <li>卵3個をボウルで溶きほぐす</li>
+                                        <li>フライパンを中火で温め、バター少々を溶かす</li>
+                                        <li>卵を入れて箸で大きくかき混ぜる</li>
+                                        <li>半熟状態でチーズをのせて火を止め、余熱で仕上げる</li>
+                                    </ol>
+                                </div>
+                            </div>
+                            <div class="meal-card">
+                                <div class="meal-header">
+                                    <div class="meal-icon lunch">☀️</div>
+                                    <div><div class="meal-time">昼 12:00〜13:00</div><div class="meal-title">サラダチキンサンド</div></div>
+                                    <span class="quick-badge ms-auto">買うだけ</span>
+                                </div>
+                                <ul class="meal-items">
+                                    <li><span class="item-name"><span class="item-emoji">🥪</span>全粒粉サンド（チキン系）</span><span class="item-protein">18g</span></li>
+                                    <li><span class="item-name"><span class="item-emoji">🥛</span>プロテインドリンク</span><span class="item-protein">15g</span></li>
+                                </ul>
+                            </div>
+                            <div class="meal-card">
+                                <div class="meal-header">
+                                    <div class="meal-icon dinner">🌙</div>
+                                    <div><div class="meal-time">夜 23:00〜23:30</div><div class="meal-title">コンビニ高タンパクセット</div></div>
+                                    <span class="quick-badge ms-auto">買うだけ</span>
+                                </div>
+                                <p class="meal-description">週末前、ゆっくり食べてOK</p>
+                                <ul class="meal-items">
+                                    <li><span class="item-name"><span class="item-emoji">🍗</span>グリルチキン</span><span class="item-protein">28g</span></li>
+                                    <li><span class="item-name"><span class="item-emoji">🥗</span>豆腐サラダ</span><span class="item-protein">8g</span></li>
+                                    <li><span class="item-name"><span class="item-emoji">🥚</span>ゆで卵 2個</span><span class="item-protein">13g</span></li>
+                                </ul>
+                            </div>
+                            <div class="meal-card">
+                                <div class="meal-header">
+                                    <div class="meal-icon post-gym">🥛</div>
+                                    <div><div class="meal-time">間食</div><div class="meal-title">プロテイン補給</div></div>
+                                </div>
+                                <ul class="meal-items">
+                                    <li><span class="item-name"><span class="item-emoji">🥤</span>プロテイン 1杯</span><span class="item-protein">20g</span></li>
+                                </ul>
+                            </div>
+                            <div class="nutrition-summary">
+                                <div class="nutrition-title"><i class="bi bi-graph-up me-2"></i>本日の栄養素</div>
+                                <div class="nutrition-grid">
+                                    <div><div class="nutrition-item-value">~1,600</div><div class="nutrition-item-label">kcal</div></div>
+                                    <div><div class="nutrition-item-value">124g</div><div class="nutrition-item-label">タンパク質</div></div>
+                                    <div><div class="nutrition-item-value">~45g</div><div class="nutrition-item-label">脂質</div></div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Saturday - OFF -->
+                        <div class="tab-pane fade" id="saturday" role="tabpanel">
+                            <h2 class="mb-4" style="font-family: 'Zen Maru Gothic', sans-serif; font-weight: 700;">
+                                <span style="color: #d63031;">土曜日</span>
+                                <span class="day-type-badge badge-off">🚫 ジム不可日 / 買い出し</span>
+                            </h2>
+                            <div class="meal-card">
+                                <div class="meal-header">
+                                    <div class="meal-icon morning">🌅</div>
+                                    <div><div class="meal-time">朝 9:00〜10:00</div><div class="meal-title">納豆豆腐丼</div></div>
+                                    <span class="quick-badge ms-auto">3分</span>
+                                </div>
+                                <ul class="meal-items">
+                                    <li><span class="item-name"><span class="item-emoji">🧊</span>絹ごし豆腐 1丁</span><span class="item-protein">15g</span></li>
+                                    <li><span class="item-name"><span class="item-emoji">🫘</span>納豆 1パック</span><span class="item-protein">7g</span></li>
+                                    <li><span class="item-name"><span class="item-emoji">🥚</span>卵黄 1個</span><span class="item-protein">3g</span></li>
+                                </ul>
+                                <div class="recipe-steps">
+                                    <div class="recipe-steps-title">🍳 作り方</div>
+                                    <ol>
+                                        <li>豆腐を器に出して軽く崩す</li>
+                                        <li>納豆をタレと一緒に混ぜてのせる</li>
+                                        <li>卵黄を落として醤油少々で完成！</li>
+                                    </ol>
+                                </div>
+                            </div>
+                            <div class="meal-card">
+                                <div class="meal-header">
+                                    <div class="meal-icon lunch">☀️</div>
+                                    <div><div class="meal-time">昼 13:00〜14:00</div><div class="meal-title">買い出し＋昼食</div></div>
+                                    <span class="quick-badge ms-auto">買うだけ</span>
+                                </div>
+                                <p class="meal-description">スーパーで1週間分の買い物ついでに</p>
+                                <ul class="meal-items">
+                                    <li><span class="item-name"><span class="item-emoji">🍱</span>高タンパク弁当</span><span class="item-protein">30g</span></li>
+                                    <li><span class="item-name"><span class="item-emoji">🥚</span>ゆで卵 2個</span><span class="item-protein">13g</span></li>
+                                    <li><span class="item-name"><span class="item-emoji">🥛</span>プロテインドリンク</span><span class="item-protein">15g</span></li>
+                                </ul>
+                            </div>
+                            <div class="meal-card">
+                                <div class="meal-header">
+                                    <div class="meal-icon dinner">🌙</div>
+                                    <div><div class="meal-time">夜 19:00〜20:00</div><div class="meal-title">スーパーの焼き鳥＋惣菜</div></div>
+                                    <span class="quick-badge ms-auto">買うだけ</span>
+                                </div>
+                                <p class="meal-description">休日はスーパー惣菜でラクに！</p>
+                                <ul class="meal-items">
+                                    <li><span class="item-name"><span class="item-emoji">🍢</span>焼き鳥（もも・むね）4本</span><span class="item-protein">32g</span></li>
+                                    <li><span class="item-name"><span class="item-emoji">🥗</span>枝豆</span><span class="item-protein">6g</span></li>
+                                    <li><span class="item-name"><span class="item-emoji">🧊</span>冷奴</span><span class="item-protein">10g</span></li>
+                                </ul>
+                            </div>
+                            <div class="meal-card">
+                                <div class="meal-header">
+                                    <div class="meal-icon post-gym">🥛</div>
+                                    <div><div class="meal-time">間食</div><div class="meal-title">プロテイン補給</div></div>
+                                </div>
+                                <ul class="meal-items">
+                                    <li><span class="item-name"><span class="item-emoji">🥤</span>プロテイン 1杯</span><span class="item-protein">20g</span></li>
+                                    <li><span class="item-name"><span class="item-emoji">🥜</span>ナッツ少量</span><span class="item-protein">5g</span></li>
+                                </ul>
+                            </div>
+                            <div class="nutrition-summary">
+                                <div class="nutrition-title"><i class="bi bi-graph-up me-2"></i>本日の栄養素</div>
+                                <div class="nutrition-grid">
+                                    <div><div class="nutrition-item-value">~1,750</div><div class="nutrition-item-label">kcal</div></div>
+                                    <div><div class="nutrition-item-value">156g</div><div class="nutrition-item-label">タンパク質</div></div>
+                                    <div><div class="nutrition-item-value">~45g</div><div class="nutrition-item-label">脂質</div></div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+                <!-- Sidebar -->
+                <div class="col-lg-4">
+                    <div class="schedule-card">
+                        <div class="schedule-title"><i class="bi bi-calendar-week"></i>週間スケジュール</div>
+                        <div class="schedule-grid">
+                            <div class="schedule-day gym"><div class="schedule-day-label">日</div><div class="schedule-day-type">💪</div></div>
+                            <div class="schedule-day rest"><div class="schedule-day-label">月</div><div class="schedule-day-type">回復</div></div>
+                            <div class="schedule-day gym"><div class="schedule-day-label">火</div><div class="schedule-day-type">💪</div></div>
+                            <div class="schedule-day rest"><div class="schedule-day-label">水</div><div class="schedule-day-type">回復</div></div>
+                            <div class="schedule-day gym"><div class="schedule-day-label">木</div><div class="schedule-day-type">💪</div></div>
+                            <div class="schedule-day off"><div class="schedule-day-label">金</div><div class="schedule-day-type">不可</div></div>
+                            <div class="schedule-day off"><div class="schedule-day-label">土</div><div class="schedule-day-type">買出</div></div>
+                        </div>
+                    </div>
+
+                    <div class="night-tips-card">
+                        <div class="night-tips-title"><i class="bi bi-moon-stars"></i>平日深夜ジムの鉄則</div>
+                        <ul class="tips-list">
+                            <li><strong>帰宅前にコンビニ</strong>で軽食を買う</li>
+                            <li><strong>ジム前は軽めに</strong>（サラダチキン＋おにぎり程度）</li>
+                            <li><strong>ジム後はプロテインのみ</strong>（固形物NG）</li>
+                            <li><strong>飲んだら30分以内</strong>に就寝</li>
+                            <li>軽い<strong>ストレッチ</strong>で交感神経を鎮める</li>
+                            <li><strong>シャワーは短め</strong>に（深部体温を上げすぎない）</li>
+                        </ul>
+                    </div>
+
+                    <div class="schedule-card" style="background: linear-gradient(135deg, #74b9ff, #0984e3); color: white;">
+                        <div class="schedule-title" style="color: white;"><i class="bi bi-droplet-fill"></i>飲み物ルール</div>
+                        <div style="font-size: 0.9rem;">
+                            <p style="margin-bottom: 0.5rem;"><strong>✅ OK</strong>：水、お茶、ブラックコーヒー、無糖炭酸水</p>
+                            <p style="margin-bottom: 0.5rem;"><strong>⚠️ たまに</strong>：ゼロカロリー飲料</p>
+                            <p style="margin-bottom: 0;"><strong>❌ NG</strong>：ジュース、野菜ジュース、スポドリ</p>
+                        </div>
+                    </div>
+
+                    <div class="tips-card">
+                        <div class="tips-title"><i class="bi bi-lightbulb-fill"></i>成功のコツ</div>
+                        <ul class="tips-list">
+                            <li><strong>朝は必ず何か入れる</strong>：ヨーグルトだけでもOK</li>
+                            <li><strong>回復日もタンパク質</strong>：筋合成は48時間続く</li>
+                            <li><strong>睡眠7時間以上</strong>：成長ホルモンのため</li>
+                            <li><strong>水を1日2L</strong>は飲む</li>
+                        </ul>
+                    </div>
+
+                    <div class="shopping-section">
+                        <div class="shopping-title"><i class="bi bi-cart3"></i>週末の買い物リスト</div>
+                        <div class="shopping-category">
+                            <div class="category-title">🥩 肉類</div>
+                            <div class="shopping-items">
+                                <span class="shopping-item">鶏むね肉 1kg</span>
+                                <span class="shopping-item">鶏ささみ 400g</span>
+                                <span class="shopping-item">豚ヒレ 200g</span>
+                                <span class="shopping-item">牛もも 200g</span>
+                            </div>
+                        </div>
+                        <div class="shopping-category">
+                            <div class="category-title">🐟 魚類</div>
+                            <div class="shopping-items">
+                                <span class="shopping-item">サバ缶 3缶</span>
+                                <span class="shopping-item">ツナ缶 4缶</span>
+                                <span class="shopping-item">イワシ缶 2缶</span>
+                                <span class="shopping-item">生鮭 2切</span>
+                                <span class="shopping-item">マグロ刺身</span>
+                            </div>
+                        </div>
+                        <div class="shopping-category">
+                            <div class="category-title">🥚 卵・大豆製品</div>
+                            <div class="shopping-items">
+                                <span class="shopping-item">卵 10個</span>
+                                <span class="shopping-item">木綿豆腐 2丁</span>
+                                <span class="shopping-item">絹ごし豆腐 1丁</span>
+                                <span class="shopping-item">納豆 4パック</span>
+                            </div>
+                        </div>
+                        <div class="shopping-category">
+                            <div class="category-title">🥦 野菜・その他</div>
+                            <div class="shopping-items">
+                                <span class="shopping-item">冷凍ブロッコリー</span>
+                                <span class="shopping-item">冷凍枝豆</span>
+                                <span class="shopping-item">キムチ</span>
+                                <span class="shopping-item">玄米</span>
+                                <span class="shopping-item">オートミール</span>
+                            </div>
+                        </div>
+                        <div class="shopping-category">
+                            <div class="category-title">🥛 コンビニ常備</div>
+                            <div class="shopping-items">
+                                <span class="shopping-item">サラダチキン</span>
+                                <span class="shopping-item">ゆで卵</span>
+                                <span class="shopping-item">ギリシャヨーグルト</span>
+                                <span class="shopping-item">プロテインバー</span>
+                                <span class="shopping-item">カット野菜</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container">
+            <p class="mb-1"><strong>目標：177cm 82kg → 67kg（-15kg）</strong></p>
+            <p class="mb-2" style="opacity: 0.9;">月2.5kgペース × 6ヶ月 = 筋肉を守りながら健康的に</p>
+            <p class="mb-0" style="opacity: 0.7; font-size: 0.9rem;"><i class="bi bi-moon-stars me-1"></i>ジム 日・火・木 0:00〜1:00 | 休日は20時夕食 | 平日は23時帰宅対応</p>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
