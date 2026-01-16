@@ -90,6 +90,24 @@
         .recipe-steps ol { margin: 0; padding-left: 1.25rem; font-size: 0.9rem; color: #444; }
         .recipe-steps ol li { margin-bottom: 0.4rem; }
         .footer { background: var(--primary-green); color: white; padding: 2rem 0; margin-top: 3rem; text-align: center; }
+        /* 栄養素バッジ */
+        .nutrient-tags { display: flex; flex-wrap: wrap; gap: 0.25rem; margin-left: auto; }
+        .nutrient-tag { padding: 0.15rem 0.4rem; border-radius: 8px; font-size: 0.65rem; font-weight: 600; white-space: nowrap; }
+        .nutrient-mg { background: #00b894; color: white; } /* マグネシウム */
+        .nutrient-d { background: #fdcb6e; color: #2d3436; } /* ビタミンD */
+        .nutrient-b6 { background: #74b9ff; color: #2d3436; } /* ビタミンB6 */
+        .nutrient-fiber { background: #a29bfe; color: white; } /* 食物繊維 */
+        .nutrient-zn { background: #fd79a8; color: white; } /* 亜鉛 */
+        /* 筋合成サマリー */
+        .muscle-summary { background: linear-gradient(135deg, #00b894, #00cec9); color: white; border-radius: 12px; padding: 1rem; margin-top: 0.75rem; }
+        .muscle-summary-title { font-weight: 700; font-size: 0.85rem; margin-bottom: 0.5rem; }
+        .muscle-summary-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0.5rem; text-align: center; }
+        .muscle-summary-item { font-size: 0.75rem; }
+        .muscle-summary-value { font-weight: 700; font-size: 1rem; }
+        .muscle-summary-label { opacity: 0.9; font-size: 0.65rem; }
+        .muscle-summary-status { font-size: 0.6rem; margin-top: 0.1rem; }
+        .status-ok { color: #55efc4; }
+        .status-low { color: #ffeaa7; }
         @media (max-width: 768px) {
             .hero-title { font-size: 1.8rem; }
             .nav-pills .nav-link { padding: 0.5rem 0.75rem; font-size: 0.85rem; }
@@ -156,8 +174,8 @@
                                     <span class="quick-badge ms-auto">5分</span>
                                 </div>
                                 <ul class="meal-items">
-                                    <li><span class="item-name"><span class="item-emoji">🥣</span>オートミール 40g</span><span class="item-protein">5g</span></li>
-                                    <li><span class="item-name"><span class="item-emoji">🥚</span>目玉焼き 2個</span><span class="item-protein">12g</span></li>
+                                    <li><span class="item-name"><span class="item-emoji">🥣</span>オートミール 40g</span><div class="nutrient-tags"><span class="nutrient-tag nutrient-mg">Mg</span><span class="nutrient-tag nutrient-fiber">繊維</span></div><span class="item-protein">5g</span></li>
+                                    <li><span class="item-name"><span class="item-emoji">🥚</span>目玉焼き 2個</span><div class="nutrient-tags"><span class="nutrient-tag nutrient-d">D</span><span class="nutrient-tag nutrient-b6">B6</span></div><span class="item-protein">12g</span></li>
                                     <li><span class="item-name"><span class="item-emoji">🥛</span>ギリシャヨーグルト</span><span class="item-protein">12g</span></li>
                                 </ul>
                                 <div class="recipe-steps">
@@ -177,10 +195,10 @@
                                     <span class="quick-badge ms-auto">5分</span>
                                 </div>
                                 <ul class="meal-items">
-                                    <li><span class="item-name"><span class="item-emoji">🐟</span>サバ水煮缶 1缶</span><span class="item-protein">20g</span></li>
-                                    <li><span class="item-name"><span class="item-emoji">🥬</span>キムチ</span><span class="item-protein">1g</span></li>
-                                    <li><span class="item-name"><span class="item-emoji">🥚</span>温泉卵 2個</span><span class="item-protein">12g</span></li>
-                                    <li><span class="item-name"><span class="item-emoji">🍚</span>玄米ご飯 小盛り</span><span class="item-protein">3g</span></li>
+                                    <li><span class="item-name"><span class="item-emoji">🐟</span>サバ水煮缶 1缶</span><div class="nutrient-tags"><span class="nutrient-tag nutrient-d">D</span><span class="nutrient-tag nutrient-b6">B6</span><span class="nutrient-tag nutrient-mg">Mg</span></div><span class="item-protein">20g</span></li>
+                                    <li><span class="item-name"><span class="item-emoji">🥬</span>キムチ</span><div class="nutrient-tags"><span class="nutrient-tag nutrient-fiber">繊維</span></div><span class="item-protein">1g</span></li>
+                                    <li><span class="item-name"><span class="item-emoji">🥚</span>温泉卵 2個</span><div class="nutrient-tags"><span class="nutrient-tag nutrient-d">D</span><span class="nutrient-tag nutrient-b6">B6</span></div><span class="item-protein">12g</span></li>
+                                    <li><span class="item-name"><span class="item-emoji">🍚</span>玄米ご飯 小盛り</span><div class="nutrient-tags"><span class="nutrient-tag nutrient-mg">Mg</span><span class="nutrient-tag nutrient-fiber">繊維</span></div><span class="item-protein">3g</span></li>
                                 </ul>
                                 <div class="recipe-steps">
                                     <div class="recipe-steps-title">🍳 作り方</div>
@@ -200,9 +218,9 @@
                                 </div>
                                 <p class="meal-description">休日はしっかり調理！ジム4時間前に食べ終える</p>
                                 <ul class="meal-items">
-                                    <li><span class="item-name"><span class="item-emoji">🐔</span>鶏むね肉 200g</span><span class="item-protein">48g</span></li>
-                                    <li><span class="item-name"><span class="item-emoji">🥦</span>冷凍ブロッコリー</span><span class="item-protein">4g</span></li>
-                                    <li><span class="item-name"><span class="item-emoji">🍲</span>インスタント味噌汁</span><span class="item-protein">2g</span></li>
+                                    <li><span class="item-name"><span class="item-emoji">🐔</span>鶏むね肉 200g</span><div class="nutrient-tags"><span class="nutrient-tag nutrient-b6">B6</span><span class="nutrient-tag nutrient-mg">Mg</span></div><span class="item-protein">48g</span></li>
+                                    <li><span class="item-name"><span class="item-emoji">🥦</span>冷凍ブロッコリー</span><div class="nutrient-tags"><span class="nutrient-tag nutrient-mg">Mg</span><span class="nutrient-tag nutrient-fiber">繊維</span></div><span class="item-protein">4g</span></li>
+                                    <li><span class="item-name"><span class="item-emoji">🍲</span>インスタント味噌汁</span><div class="nutrient-tags"><span class="nutrient-tag nutrient-mg">Mg</span></div><span class="item-protein">2g</span></li>
                                 </ul>
                                 <div class="recipe-steps">
                                     <div class="recipe-steps-title">🍳 作り方</div>
@@ -233,6 +251,26 @@
                                     <div><div class="nutrition-item-value">~40g</div><div class="nutrition-item-label">脂質</div></div>
                                 </div>
                             </div>
+                            <div class="muscle-summary">
+                                <div class="muscle-summary-title"><i class="bi bi-lightning-charge-fill me-1"></i>筋合成サポート栄養素</div>
+                                <div class="muscle-summary-grid">
+                                    <div class="muscle-summary-item">
+                                        <div class="muscle-summary-value">~260mg</div>
+                                        <div class="muscle-summary-label">マグネシウム</div>
+                                        <div class="muscle-summary-status status-low">⚠️ やや不足</div>
+                                    </div>
+                                    <div class="muscle-summary-item">
+                                        <div class="muscle-summary-value">~16μg</div>
+                                        <div class="muscle-summary-label">ビタミンD</div>
+                                        <div class="muscle-summary-status status-ok">✓ OK</div>
+                                    </div>
+                                    <div class="muscle-summary-item">
+                                        <div class="muscle-summary-value">~2.4mg</div>
+                                        <div class="muscle-summary-label">ビタミンB6</div>
+                                        <div class="muscle-summary-status status-ok">✓ 十分</div>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
 
                         <!-- Monday - REST -->
@@ -250,8 +288,8 @@
                                 <p class="meal-description">昨夜のトレーニングからの回復を促進</p>
                                 <ul class="meal-items">
                                     <li><span class="item-name"><span class="item-emoji">🥛</span>ギリシャヨーグルト</span><span class="item-protein">12g</span></li>
-                                    <li><span class="item-name"><span class="item-emoji">🥚</span>ゆで卵 2個（コンビニ）</span><span class="item-protein">13g</span></li>
-                                    <li><span class="item-name"><span class="item-emoji">🍌</span>バナナ 1本</span><span class="item-protein">1g</span></li>
+                                    <li><span class="item-name"><span class="item-emoji">🥚</span>ゆで卵 2個（コンビニ）</span><div class="nutrient-tags"><span class="nutrient-tag nutrient-d">D</span><span class="nutrient-tag nutrient-b6">B6</span></div><span class="item-protein">13g</span></li>
+                                    <li><span class="item-name"><span class="item-emoji">🍌</span>バナナ 1本</span><div class="nutrient-tags"><span class="nutrient-tag nutrient-mg">Mg</span><span class="nutrient-tag nutrient-b6">B6</span></div><span class="item-protein">1g</span></li>
                                 </ul>
                             </div>
                             <div class="meal-card">
@@ -261,9 +299,9 @@
                                     <span class="quick-badge ms-auto">買うだけ</span>
                                 </div>
                                 <ul class="meal-items">
-                                    <li><span class="item-name"><span class="item-emoji">🍗</span>サラダチキン</span><span class="item-protein">24g</span></li>
-                                    <li><span class="item-name"><span class="item-emoji">🍙</span>玄米おにぎり 1個</span><span class="item-protein">3g</span></li>
-                                    <li><span class="item-name"><span class="item-emoji">🥗</span>カット野菜サラダ</span><span class="item-protein">1g</span></li>
+                                    <li><span class="item-name"><span class="item-emoji">🍗</span>サラダチキン</span><div class="nutrient-tags"><span class="nutrient-tag nutrient-b6">B6</span></div><span class="item-protein">24g</span></li>
+                                    <li><span class="item-name"><span class="item-emoji">🍙</span>玄米おにぎり 1個</span><div class="nutrient-tags"><span class="nutrient-tag nutrient-mg">Mg</span><span class="nutrient-tag nutrient-fiber">繊維</span></div><span class="item-protein">3g</span></li>
+                                    <li><span class="item-name"><span class="item-emoji">🥗</span>カット野菜サラダ</span><div class="nutrient-tags"><span class="nutrient-tag nutrient-fiber">繊維</span></div><span class="item-protein">1g</span></li>
                                 </ul>
                             </div>
                             <div class="meal-card">
@@ -275,8 +313,8 @@
                                 <p class="meal-description">回復日はしっかり食べてOK</p>
                                 <ul class="meal-items">
                                     <li><span class="item-name"><span class="item-emoji">🍱</span>タンパク質が摂れる弁当</span><span class="item-protein">30g</span></li>
-                                    <li><span class="item-name"><span class="item-emoji">🥚</span>ゆで卵 2個</span><span class="item-protein">13g</span></li>
-                                    <li><span class="item-name"><span class="item-emoji">🥗</span>サラダ</span><span class="item-protein">2g</span></li>
+                                    <li><span class="item-name"><span class="item-emoji">🥚</span>ゆで卵 2個</span><div class="nutrient-tags"><span class="nutrient-tag nutrient-d">D</span><span class="nutrient-tag nutrient-b6">B6</span></div><span class="item-protein">13g</span></li>
+                                    <li><span class="item-name"><span class="item-emoji">🥗</span>サラダ</span><div class="nutrient-tags"><span class="nutrient-tag nutrient-fiber">繊維</span></div><span class="item-protein">2g</span></li>
                                 </ul>
                             </div>
                             <div class="meal-card">
@@ -296,6 +334,26 @@
                                     <div><div class="nutrition-item-value">~45g</div><div class="nutrition-item-label">脂質</div></div>
                                 </div>
                             </div>
+                            <div class="muscle-summary">
+                                <div class="muscle-summary-title"><i class="bi bi-lightning-charge-fill me-1"></i>筋合成サポート栄養素</div>
+                                <div class="muscle-summary-grid">
+                                    <div class="muscle-summary-item">
+                                        <div class="muscle-summary-value">~120mg</div>
+                                        <div class="muscle-summary-label">マグネシウム</div>
+                                        <div class="muscle-summary-status status-low">⚠️ 不足</div>
+                                    </div>
+                                    <div class="muscle-summary-item">
+                                        <div class="muscle-summary-value">~5μg</div>
+                                        <div class="muscle-summary-label">ビタミンD</div>
+                                        <div class="muscle-summary-status status-low">⚠️ 不足</div>
+                                    </div>
+                                    <div class="muscle-summary-item">
+                                        <div class="muscle-summary-value">~1.5mg</div>
+                                        <div class="muscle-summary-label">ビタミンB6</div>
+                                        <div class="muscle-summary-status status-ok">✓ OK</div>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
 
                         <!-- Tuesday - GYM -->
@@ -311,9 +369,9 @@
                                     <span class="quick-badge ms-auto">3分</span>
                                 </div>
                                 <ul class="meal-items">
-                                    <li><span class="item-name"><span class="item-emoji">🥚</span>卵 2個</span><span class="item-protein">12g</span></li>
-                                    <li><span class="item-name"><span class="item-emoji">🫘</span>納豆 1パック</span><span class="item-protein">7g</span></li>
-                                    <li><span class="item-name"><span class="item-emoji">🍚</span>玄米ご飯 小盛り</span><span class="item-protein">3g</span></li>
+                                    <li><span class="item-name"><span class="item-emoji">🥚</span>卵 2個</span><div class="nutrient-tags"><span class="nutrient-tag nutrient-d">D</span><span class="nutrient-tag nutrient-b6">B6</span></div><span class="item-protein">12g</span></li>
+                                    <li><span class="item-name"><span class="item-emoji">🫘</span>納豆 1パック</span><div class="nutrient-tags"><span class="nutrient-tag nutrient-mg">Mg</span><span class="nutrient-tag nutrient-zn">Zn</span></div><span class="item-protein">7g</span></li>
+                                    <li><span class="item-name"><span class="item-emoji">🍚</span>玄米ご飯 小盛り</span><div class="nutrient-tags"><span class="nutrient-tag nutrient-mg">Mg</span><span class="nutrient-tag nutrient-fiber">繊維</span></div><span class="item-protein">3g</span></li>
                                 </ul>
                                 <div class="recipe-steps">
                                     <div class="recipe-steps-title">🍳 作り方</div>
@@ -331,9 +389,9 @@
                                     <span class="quick-badge ms-auto">3分</span>
                                 </div>
                                 <ul class="meal-items">
-                                    <li><span class="item-name"><span class="item-emoji">🐟</span>ツナ缶（ノンオイル）2缶</span><span class="item-protein">26g</span></li>
-                                    <li><span class="item-name"><span class="item-emoji">🥗</span>カット野菜</span><span class="item-protein">1g</span></li>
-                                    <li><span class="item-name"><span class="item-emoji">🥚</span>ゆで卵 2個</span><span class="item-protein">13g</span></li>
+                                    <li><span class="item-name"><span class="item-emoji">🐟</span>ツナ缶（ノンオイル）2缶</span><div class="nutrient-tags"><span class="nutrient-tag nutrient-d">D</span><span class="nutrient-tag nutrient-b6">B6</span></div><span class="item-protein">26g</span></li>
+                                    <li><span class="item-name"><span class="item-emoji">🥗</span>カット野菜</span><div class="nutrient-tags"><span class="nutrient-tag nutrient-fiber">繊維</span></div><span class="item-protein">1g</span></li>
+                                    <li><span class="item-name"><span class="item-emoji">🥚</span>ゆで卵 2個</span><div class="nutrient-tags"><span class="nutrient-tag nutrient-d">D</span><span class="nutrient-tag nutrient-b6">B6</span></div><span class="item-protein">13g</span></li>
                                     <li><span class="item-name"><span class="item-emoji">🍫</span>プロテインバー</span><span class="item-protein">15g</span></li>
                                 </ul>
                             </div>
@@ -345,8 +403,8 @@
                                 </div>
                                 <p class="meal-description">ジム1時間前なので消化の良いものを</p>
                                 <ul class="meal-items">
-                                    <li><span class="item-name"><span class="item-emoji">🍗</span>サラダチキン スモーク</span><span class="item-protein">24g</span></li>
-                                    <li><span class="item-name"><span class="item-emoji">🍙</span>鮭おにぎり 1個</span><span class="item-protein">5g</span></li>
+                                    <li><span class="item-name"><span class="item-emoji">🍗</span>サラダチキン スモーク</span><div class="nutrient-tags"><span class="nutrient-tag nutrient-b6">B6</span></div><span class="item-protein">24g</span></li>
+                                    <li><span class="item-name"><span class="item-emoji">🍙</span>鮭おにぎり 1個</span><div class="nutrient-tags"><span class="nutrient-tag nutrient-d">D</span><span class="nutrient-tag nutrient-b6">B6</span></div><span class="item-protein">5g</span></li>
                                 </ul>
                             </div>
                             <div class="meal-card gym-card">
@@ -367,6 +425,26 @@
                                     <div><div class="nutrition-item-value">~40g</div><div class="nutrition-item-label">脂質</div></div>
                                 </div>
                             </div>
+                            <div class="muscle-summary">
+                                <div class="muscle-summary-title"><i class="bi bi-lightning-charge-fill me-1"></i>筋合成サポート栄養素</div>
+                                <div class="muscle-summary-grid">
+                                    <div class="muscle-summary-item">
+                                        <div class="muscle-summary-value">~170mg</div>
+                                        <div class="muscle-summary-label">マグネシウム</div>
+                                        <div class="muscle-summary-status status-low">⚠️ 不足</div>
+                                    </div>
+                                    <div class="muscle-summary-item">
+                                        <div class="muscle-summary-value">~16μg</div>
+                                        <div class="muscle-summary-label">ビタミンD</div>
+                                        <div class="muscle-summary-status status-ok">✓ OK</div>
+                                    </div>
+                                    <div class="muscle-summary-item">
+                                        <div class="muscle-summary-value">~1.8mg</div>
+                                        <div class="muscle-summary-label">ビタミンB6</div>
+                                        <div class="muscle-summary-status status-ok">✓ OK</div>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
 
                         <!-- Wednesday - REST -->
@@ -383,7 +461,7 @@
                                 </div>
                                 <ul class="meal-items">
                                     <li><span class="item-name"><span class="item-emoji">🥤</span>プロテイン 1杯</span><span class="item-protein">20g</span></li>
-                                    <li><span class="item-name"><span class="item-emoji">🫘</span>納豆 1パック</span><span class="item-protein">7g</span></li>
+                                    <li><span class="item-name"><span class="item-emoji">🫘</span>納豆 1パック</span><div class="nutrient-tags"><span class="nutrient-tag nutrient-mg">Mg</span><span class="nutrient-tag nutrient-zn">Zn</span></div><span class="item-protein">7g</span></li>
                                 </ul>
                             </div>
                             <div class="meal-card">
@@ -394,7 +472,7 @@
                                 </div>
                                 <ul class="meal-items">
                                     <li><span class="item-name"><span class="item-emoji">🍱</span>タンパク質が摂れる弁当</span><span class="item-protein">30g</span></li>
-                                    <li><span class="item-name"><span class="item-emoji">🥛</span>無調整豆乳 200ml</span><span class="item-protein">8g</span></li>
+                                    <li><span class="item-name"><span class="item-emoji">🥛</span>無調整豆乳 200ml</span><div class="nutrient-tags"><span class="nutrient-tag nutrient-mg">Mg</span></div><span class="item-protein">8g</span></li>
                                 </ul>
                             </div>
                             <div class="meal-card">
@@ -405,9 +483,9 @@
                                 </div>
                                 <p class="meal-description">帰りにスーパー寄って半額刺身ゲット！</p>
                                 <ul class="meal-items">
-                                    <li><span class="item-name"><span class="item-emoji">🍣</span>刺身盛り合わせ</span><span class="item-protein">30g</span></li>
-                                    <li><span class="item-name"><span class="item-emoji">🧊</span>パック冷奴</span><span class="item-protein">10g</span></li>
-                                    <li><span class="item-name"><span class="item-emoji">🥗</span>もずく酢</span><span class="item-protein">1g</span></li>
+                                    <li><span class="item-name"><span class="item-emoji">🍣</span>刺身盛り合わせ</span><div class="nutrient-tags"><span class="nutrient-tag nutrient-d">D</span><span class="nutrient-tag nutrient-b6">B6</span></div><span class="item-protein">30g</span></li>
+                                    <li><span class="item-name"><span class="item-emoji">🧊</span>パック冷奴</span><div class="nutrient-tags"><span class="nutrient-tag nutrient-mg">Mg</span></div><span class="item-protein">10g</span></li>
+                                    <li><span class="item-name"><span class="item-emoji">🥗</span>もずく酢</span><div class="nutrient-tags"><span class="nutrient-tag nutrient-fiber">繊維</span></div><span class="item-protein">1g</span></li>
                                 </ul>
                             </div>
                             <div class="meal-card">
@@ -427,6 +505,26 @@
                                     <div><div class="nutrition-item-value">~35g</div><div class="nutrition-item-label">脂質</div></div>
                                 </div>
                             </div>
+                            <div class="muscle-summary">
+                                <div class="muscle-summary-title"><i class="bi bi-lightning-charge-fill me-1"></i>筋合成サポート栄養素</div>
+                                <div class="muscle-summary-grid">
+                                    <div class="muscle-summary-item">
+                                        <div class="muscle-summary-value">~180mg</div>
+                                        <div class="muscle-summary-label">マグネシウム</div>
+                                        <div class="muscle-summary-status status-low">⚠️ 不足</div>
+                                    </div>
+                                    <div class="muscle-summary-item">
+                                        <div class="muscle-summary-value">~12μg</div>
+                                        <div class="muscle-summary-label">ビタミンD</div>
+                                        <div class="muscle-summary-status status-ok">✓ OK</div>
+                                    </div>
+                                    <div class="muscle-summary-item">
+                                        <div class="muscle-summary-value">~1.5mg</div>
+                                        <div class="muscle-summary-label">ビタミンB6</div>
+                                        <div class="muscle-summary-status status-ok">✓ OK</div>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
 
                         <!-- Thursday - GYM -->
@@ -443,7 +541,7 @@
                                 </div>
                                 <ul class="meal-items">
                                     <li><span class="item-name"><span class="item-emoji">🥛</span>ギリシャヨーグルト</span><span class="item-protein">12g</span></li>
-                                    <li><span class="item-name"><span class="item-emoji">🥚</span>ゆで卵 2個</span><span class="item-protein">13g</span></li>
+                                    <li><span class="item-name"><span class="item-emoji">🥚</span>ゆで卵 2個</span><div class="nutrient-tags"><span class="nutrient-tag nutrient-d">D</span><span class="nutrient-tag nutrient-b6">B6</span></div><span class="item-protein">13g</span></li>
                                 </ul>
                             </div>
                             <div class="meal-card">
@@ -453,9 +551,9 @@
                                     <span class="quick-badge ms-auto">3分</span>
                                 </div>
                                 <ul class="meal-items">
-                                    <li><span class="item-name"><span class="item-emoji">🐟</span>サバ水煮缶 1缶</span><span class="item-protein">20g</span></li>
-                                    <li><span class="item-name"><span class="item-emoji">🍚</span>玄米ご飯 小盛り</span><span class="item-protein">3g</span></li>
-                                    <li><span class="item-name"><span class="item-emoji">🥬</span>キムチ</span><span class="item-protein">1g</span></li>
+                                    <li><span class="item-name"><span class="item-emoji">🐟</span>サバ水煮缶 1缶</span><div class="nutrient-tags"><span class="nutrient-tag nutrient-d">D</span><span class="nutrient-tag nutrient-b6">B6</span><span class="nutrient-tag nutrient-mg">Mg</span></div><span class="item-protein">20g</span></li>
+                                    <li><span class="item-name"><span class="item-emoji">🍚</span>玄米ご飯 小盛り</span><div class="nutrient-tags"><span class="nutrient-tag nutrient-mg">Mg</span><span class="nutrient-tag nutrient-fiber">繊維</span></div><span class="item-protein">3g</span></li>
+                                    <li><span class="item-name"><span class="item-emoji">🥬</span>キムチ</span><div class="nutrient-tags"><span class="nutrient-tag nutrient-fiber">繊維</span></div><span class="item-protein">1g</span></li>
                                     <li><span class="item-name"><span class="item-emoji">🥤</span>プロテイン 1杯</span><span class="item-protein">20g</span></li>
                                 </ul>
                             </div>
@@ -467,9 +565,9 @@
                                 </div>
                                 <p class="meal-description">週後半のご褒美！ちょっといいサラダチキン</p>
                                 <ul class="meal-items">
-                                    <li><span class="item-name"><span class="item-emoji">🍗</span>サラダチキン ハーブ</span><span class="item-protein">24g</span></li>
-                                    <li><span class="item-name"><span class="item-emoji">🍙</span>焼き鮭おにぎり</span><span class="item-protein">5g</span></li>
-                                    <li><span class="item-name"><span class="item-emoji">🍌</span>バナナ 1本</span><span class="item-protein">1g</span></li>
+                                    <li><span class="item-name"><span class="item-emoji">🍗</span>サラダチキン ハーブ</span><div class="nutrient-tags"><span class="nutrient-tag nutrient-b6">B6</span></div><span class="item-protein">24g</span></li>
+                                    <li><span class="item-name"><span class="item-emoji">🍙</span>焼き鮭おにぎり</span><div class="nutrient-tags"><span class="nutrient-tag nutrient-d">D</span><span class="nutrient-tag nutrient-b6">B6</span></div><span class="item-protein">5g</span></li>
+                                    <li><span class="item-name"><span class="item-emoji">🍌</span>バナナ 1本</span><div class="nutrient-tags"><span class="nutrient-tag nutrient-mg">Mg</span><span class="nutrient-tag nutrient-b6">B6</span></div><span class="item-protein">1g</span></li>
                                 </ul>
                             </div>
                             <div class="meal-card gym-card">
@@ -490,6 +588,26 @@
                                     <div><div class="nutrition-item-value">~40g</div><div class="nutrition-item-label">脂質</div></div>
                                 </div>
                             </div>
+                            <div class="muscle-summary">
+                                <div class="muscle-summary-title"><i class="bi bi-lightning-charge-fill me-1"></i>筋合成サポート栄養素</div>
+                                <div class="muscle-summary-grid">
+                                    <div class="muscle-summary-item">
+                                        <div class="muscle-summary-value">~150mg</div>
+                                        <div class="muscle-summary-label">マグネシウム</div>
+                                        <div class="muscle-summary-status status-low">⚠️ 不足</div>
+                                    </div>
+                                    <div class="muscle-summary-item">
+                                        <div class="muscle-summary-value">~18μg</div>
+                                        <div class="muscle-summary-label">ビタミンD</div>
+                                        <div class="muscle-summary-status status-ok">✓ OK</div>
+                                    </div>
+                                    <div class="muscle-summary-item">
+                                        <div class="muscle-summary-value">~2.0mg</div>
+                                        <div class="muscle-summary-label">ビタミンB6</div>
+                                        <div class="muscle-summary-status status-ok">✓ 十分</div>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
 
                         <!-- Friday - OFF -->
@@ -505,7 +623,7 @@
                                     <span class="quick-badge ms-auto">5分</span>
                                 </div>
                                 <ul class="meal-items">
-                                    <li><span class="item-name"><span class="item-emoji">🥚</span>卵 3個</span><span class="item-protein">18g</span></li>
+                                    <li><span class="item-name"><span class="item-emoji">🥚</span>卵 3個</span><div class="nutrient-tags"><span class="nutrient-tag nutrient-d">D</span><span class="nutrient-tag nutrient-b6">B6</span></div><span class="item-protein">18g</span></li>
                                     <li><span class="item-name"><span class="item-emoji">🧀</span>チーズ 1枚</span><span class="item-protein">4g</span></li>
                                 </ul>
                                 <div class="recipe-steps">
@@ -525,7 +643,7 @@
                                     <span class="quick-badge ms-auto">買うだけ</span>
                                 </div>
                                 <ul class="meal-items">
-                                    <li><span class="item-name"><span class="item-emoji">🥪</span>全粒粉サンド（チキン系）</span><span class="item-protein">18g</span></li>
+                                    <li><span class="item-name"><span class="item-emoji">🥪</span>全粒粉サンド（チキン系）</span><div class="nutrient-tags"><span class="nutrient-tag nutrient-fiber">繊維</span><span class="nutrient-tag nutrient-b6">B6</span></div><span class="item-protein">18g</span></li>
                                     <li><span class="item-name"><span class="item-emoji">🥛</span>プロテインドリンク</span><span class="item-protein">15g</span></li>
                                 </ul>
                             </div>
@@ -537,9 +655,9 @@
                                 </div>
                                 <p class="meal-description">週末前、ゆっくり食べてOK</p>
                                 <ul class="meal-items">
-                                    <li><span class="item-name"><span class="item-emoji">🍗</span>グリルチキン</span><span class="item-protein">28g</span></li>
-                                    <li><span class="item-name"><span class="item-emoji">🥗</span>豆腐サラダ</span><span class="item-protein">8g</span></li>
-                                    <li><span class="item-name"><span class="item-emoji">🥚</span>ゆで卵 2個</span><span class="item-protein">13g</span></li>
+                                    <li><span class="item-name"><span class="item-emoji">🍗</span>グリルチキン</span><div class="nutrient-tags"><span class="nutrient-tag nutrient-b6">B6</span></div><span class="item-protein">28g</span></li>
+                                    <li><span class="item-name"><span class="item-emoji">🥗</span>豆腐サラダ</span><div class="nutrient-tags"><span class="nutrient-tag nutrient-mg">Mg</span><span class="nutrient-tag nutrient-fiber">繊維</span></div><span class="item-protein">8g</span></li>
+                                    <li><span class="item-name"><span class="item-emoji">🥚</span>ゆで卵 2個</span><div class="nutrient-tags"><span class="nutrient-tag nutrient-d">D</span><span class="nutrient-tag nutrient-b6">B6</span></div><span class="item-protein">13g</span></li>
                                 </ul>
                             </div>
                             <div class="meal-card">
@@ -559,6 +677,26 @@
                                     <div><div class="nutrition-item-value">~45g</div><div class="nutrition-item-label">脂質</div></div>
                                 </div>
                             </div>
+                            <div class="muscle-summary">
+                                <div class="muscle-summary-title"><i class="bi bi-lightning-charge-fill me-1"></i>筋合成サポート栄養素</div>
+                                <div class="muscle-summary-grid">
+                                    <div class="muscle-summary-item">
+                                        <div class="muscle-summary-value">~100mg</div>
+                                        <div class="muscle-summary-label">マグネシウム</div>
+                                        <div class="muscle-summary-status status-low">⚠️ 不足</div>
+                                    </div>
+                                    <div class="muscle-summary-item">
+                                        <div class="muscle-summary-value">~7μg</div>
+                                        <div class="muscle-summary-label">ビタミンD</div>
+                                        <div class="muscle-summary-status status-low">⚠️ 不足</div>
+                                    </div>
+                                    <div class="muscle-summary-item">
+                                        <div class="muscle-summary-value">~1.5mg</div>
+                                        <div class="muscle-summary-label">ビタミンB6</div>
+                                        <div class="muscle-summary-status status-ok">✓ OK</div>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
 
                         <!-- Saturday - OFF -->
@@ -574,9 +712,9 @@
                                     <span class="quick-badge ms-auto">3分</span>
                                 </div>
                                 <ul class="meal-items">
-                                    <li><span class="item-name"><span class="item-emoji">🧊</span>絹ごし豆腐 1丁</span><span class="item-protein">15g</span></li>
-                                    <li><span class="item-name"><span class="item-emoji">🫘</span>納豆 1パック</span><span class="item-protein">7g</span></li>
-                                    <li><span class="item-name"><span class="item-emoji">🥚</span>卵黄 1個</span><span class="item-protein">3g</span></li>
+                                    <li><span class="item-name"><span class="item-emoji">🧊</span>絹ごし豆腐 1丁</span><div class="nutrient-tags"><span class="nutrient-tag nutrient-mg">Mg</span></div><span class="item-protein">15g</span></li>
+                                    <li><span class="item-name"><span class="item-emoji">🫘</span>納豆 1パック</span><div class="nutrient-tags"><span class="nutrient-tag nutrient-mg">Mg</span><span class="nutrient-tag nutrient-zn">Zn</span></div><span class="item-protein">7g</span></li>
+                                    <li><span class="item-name"><span class="item-emoji">🥚</span>卵黄 1個</span><div class="nutrient-tags"><span class="nutrient-tag nutrient-d">D</span></div><span class="item-protein">3g</span></li>
                                 </ul>
                                 <div class="recipe-steps">
                                     <div class="recipe-steps-title">🍳 作り方</div>
@@ -596,7 +734,7 @@
                                 <p class="meal-description">スーパーで1週間分の買い物ついでに</p>
                                 <ul class="meal-items">
                                     <li><span class="item-name"><span class="item-emoji">🍱</span>高タンパク弁当</span><span class="item-protein">30g</span></li>
-                                    <li><span class="item-name"><span class="item-emoji">🥚</span>ゆで卵 2個</span><span class="item-protein">13g</span></li>
+                                    <li><span class="item-name"><span class="item-emoji">🥚</span>ゆで卵 2個</span><div class="nutrient-tags"><span class="nutrient-tag nutrient-d">D</span><span class="nutrient-tag nutrient-b6">B6</span></div><span class="item-protein">13g</span></li>
                                     <li><span class="item-name"><span class="item-emoji">🥛</span>プロテインドリンク</span><span class="item-protein">15g</span></li>
                                 </ul>
                             </div>
@@ -608,9 +746,9 @@
                                 </div>
                                 <p class="meal-description">休日はスーパー惣菜でラクに！</p>
                                 <ul class="meal-items">
-                                    <li><span class="item-name"><span class="item-emoji">🍢</span>焼き鳥（もも・むね）4本</span><span class="item-protein">32g</span></li>
-                                    <li><span class="item-name"><span class="item-emoji">🥗</span>枝豆</span><span class="item-protein">6g</span></li>
-                                    <li><span class="item-name"><span class="item-emoji">🧊</span>冷奴</span><span class="item-protein">10g</span></li>
+                                    <li><span class="item-name"><span class="item-emoji">🍢</span>焼き鳥（もも・むね）4本</span><div class="nutrient-tags"><span class="nutrient-tag nutrient-b6">B6</span></div><span class="item-protein">32g</span></li>
+                                    <li><span class="item-name"><span class="item-emoji">🥗</span>枝豆</span><div class="nutrient-tags"><span class="nutrient-tag nutrient-mg">Mg</span><span class="nutrient-tag nutrient-fiber">繊維</span></div><span class="item-protein">6g</span></li>
+                                    <li><span class="item-name"><span class="item-emoji">🧊</span>冷奴</span><div class="nutrient-tags"><span class="nutrient-tag nutrient-mg">Mg</span></div><span class="item-protein">10g</span></li>
                                 </ul>
                             </div>
                             <div class="meal-card">
@@ -620,7 +758,7 @@
                                 </div>
                                 <ul class="meal-items">
                                     <li><span class="item-name"><span class="item-emoji">🥤</span>プロテイン 1杯</span><span class="item-protein">20g</span></li>
-                                    <li><span class="item-name"><span class="item-emoji">🥜</span>ナッツ少量</span><span class="item-protein">5g</span></li>
+                                    <li><span class="item-name"><span class="item-emoji">🥜</span>ナッツ少量</span><div class="nutrient-tags"><span class="nutrient-tag nutrient-mg">Mg</span><span class="nutrient-tag nutrient-zn">Zn</span></div><span class="item-protein">5g</span></li>
                                 </ul>
                             </div>
                             <div class="nutrition-summary">
@@ -629,6 +767,26 @@
                                     <div><div class="nutrition-item-value">~1,750</div><div class="nutrition-item-label">kcal</div></div>
                                     <div><div class="nutrition-item-value">156g</div><div class="nutrition-item-label">タンパク質</div></div>
                                     <div><div class="nutrition-item-value">~45g</div><div class="nutrition-item-label">脂質</div></div>
+                                </div>
+                            </div>
+                            <div class="muscle-summary">
+                                <div class="muscle-summary-title"><i class="bi bi-lightning-charge-fill me-1"></i>筋合成サポート栄養素</div>
+                                <div class="muscle-summary-grid">
+                                    <div class="muscle-summary-item">
+                                        <div class="muscle-summary-value">~250mg</div>
+                                        <div class="muscle-summary-label">マグネシウム</div>
+                                        <div class="muscle-summary-status status-low">⚠️ やや不足</div>
+                                    </div>
+                                    <div class="muscle-summary-item">
+                                        <div class="muscle-summary-value">~5μg</div>
+                                        <div class="muscle-summary-label">ビタミンD</div>
+                                        <div class="muscle-summary-status status-low">⚠️ 不足</div>
+                                    </div>
+                                    <div class="muscle-summary-item">
+                                        <div class="muscle-summary-value">~1.8mg</div>
+                                        <div class="muscle-summary-label">ビタミンB6</div>
+                                        <div class="muscle-summary-status status-ok">✓ OK</div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
