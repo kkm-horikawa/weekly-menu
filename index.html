@@ -152,6 +152,7 @@
                 <li class="nav-item" role="presentation"><button class="nav-link" id="fri-tab" data-bs-toggle="pill" data-bs-target="#friday" type="button">金</button></li>
                 <li class="nav-item" role="presentation"><button class="nav-link" id="sat-tab" data-bs-toggle="pill" data-bs-target="#saturday" type="button">土</button></li>
                 <li class="nav-item" role="presentation"><button class="nav-link" id="recipe-tab" data-bs-toggle="pill" data-bs-target="#recipes" type="button" style="background: linear-gradient(135deg, #e17055, #fdcb6e); color: white; margin-left: 1rem;">📖 レシピ</button></li>
+                <li class="nav-item" role="presentation"><button class="nav-link" id="nutrition-tab" data-bs-toggle="pill" data-bs-target="#nutrition" type="button" style="background: linear-gradient(135deg, #00b894, #55efc4); color: white;">💊 栄養素</button></li>
             </ul>
         </div>
     </nav>
@@ -1071,6 +1072,121 @@
 
                         </div>
 
+                        <!-- 栄養素タブ -->
+                        <div class="tab-pane fade" id="nutrition" role="tabpanel">
+                            <div class="day-header" style="background: linear-gradient(135deg, #00b894, #55efc4);">
+                                <h2 class="day-title"><i class="bi bi-journal-medical me-2"></i>栄養素ファクトシート</h2>
+                                <p class="day-subtitle mb-0">科学的根拠に基づくサプリ検討用情報</p>
+                            </div>
+
+                            <!-- サプリ判定サマリー -->
+                            <div class="nutrition-summary" style="background: linear-gradient(135deg, #6c5ce7, #a29bfe);">
+                                <div class="nutrition-title" style="color: white;"><i class="bi bi-capsule me-2"></i>サプリ検討まとめ</div>
+                                <div class="row" style="font-size: 0.9rem; color: white;">
+                                    <div class="col-md-4">
+                                        <p style="margin-bottom: 0.3rem;"><strong>✅ 食事で足りてる</strong></p>
+                                        <p style="margin-bottom: 0; opacity: 0.9;">オメガ3、ビタミンB6、鉄、亜鉛</p>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <p style="margin-bottom: 0.3rem;"><strong>⚠️ 野菜追加で解決</strong></p>
+                                        <p style="margin-bottom: 0; opacity: 0.9;">マグネシウム、ビタミンC、カリウム</p>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <p style="margin-bottom: 0.3rem;"><strong>💊 サプリ推奨</strong></p>
+                                        <p style="margin-bottom: 0; opacity: 0.9;">クレアチン、ビタミンD（冬季）、カルシウム</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row mt-3">
+                                <!-- 左カラム -->
+                                <div class="col-md-6">
+                                    <div class="meal-card" style="border-left: 4px solid #ff7675;">
+                                        <h5 style="color: #ff7675; margin-bottom: 0.75rem;"><i class="bi bi-droplet-half me-2"></i>オメガ3（EPA/DHA）</h5>
+                                        <p style="font-size: 0.9rem; margin-bottom: 0.5rem;"><strong>効果：</strong>筋タンパク合成を<strong>50%増加</strong>（mTOR活性化）</p>
+                                        <p style="font-size: 0.9rem; margin-bottom: 0.5rem;"><strong>目安：</strong>1.5〜3g/日</p>
+                                        <p style="font-size: 0.9rem; margin-bottom: 0.5rem; color: #00b894;"><strong>📍 判定：</strong>サバ缶1缶=約1.5g → 週3〜4缶で足りる</p>
+                                        <p style="font-size: 0.75rem; margin-bottom: 0; opacity: 0.7;">出典: <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC3021432/">Am J Clin Nutr 2011</a></p>
+                                    </div>
+
+                                    <div class="meal-card" style="border-left: 4px solid #a29bfe;">
+                                        <h5 style="color: #a29bfe; margin-bottom: 0.75rem;"><i class="bi bi-lightning-charge me-2"></i>クレアチン</h5>
+                                        <p style="font-size: 0.9rem; margin-bottom: 0.5rem;"><strong>効果：</strong>減量中の筋肉量維持、筋肉減少を<strong>40%軽減</strong></p>
+                                        <p style="font-size: 0.9rem; margin-bottom: 0.5rem;"><strong>目安：</strong>3〜5g/日（ローディング不要）</p>
+                                        <p style="font-size: 0.9rem; margin-bottom: 0.5rem; color: #e17055;"><strong>📍 判定：</strong>食事で摂取困難 → <strong>サプリ推奨</strong></p>
+                                        <p style="font-size: 0.75rem; margin-bottom: 0; opacity: 0.7;">出典: <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC7739317/">J Funct Morphol Kinesiol 2020</a></p>
+                                    </div>
+
+                                    <div class="meal-card" style="border-left: 4px solid #fdcb6e;">
+                                        <h5 style="color: #f39c12; margin-bottom: 0.75rem;"><i class="bi bi-sun me-2"></i>ビタミンD</h5>
+                                        <p style="font-size: 0.9rem; margin-bottom: 0.5rem;"><strong>効果：</strong>筋繊維に直接作用、骨密度維持</p>
+                                        <p style="font-size: 0.9rem; margin-bottom: 0.5rem;"><strong>目安：</strong>15〜20μg/日（600〜800IU）</p>
+                                        <p style="font-size: 0.9rem; margin-bottom: 0.5rem; color: #e17055;"><strong>📍 判定：</strong>冬季は日照不足 → <strong>冬はサプリ推奨</strong></p>
+                                        <p style="font-size: 0.75rem; margin-bottom: 0; opacity: 0.7;">出典: J Clin Endocrinol Metab 2011</p>
+                                    </div>
+
+                                    <div class="meal-card" style="border-left: 4px solid #00b894;">
+                                        <h5 style="color: #00b894; margin-bottom: 0.75rem;"><i class="bi bi-box me-2"></i>マグネシウム</h5>
+                                        <p style="font-size: 0.9rem; margin-bottom: 0.5rem;"><strong>効果：</strong>ATP合成・mTOR活性化・筋収縮・睡眠の質向上</p>
+                                        <p style="font-size: 0.9rem; margin-bottom: 0.5rem;"><strong>目安：</strong>340mg/日</p>
+                                        <p style="font-size: 0.9rem; margin-bottom: 0.5rem; color: #fdcb6e;"><strong>📍 判定：</strong>現メニュー約150mg → <strong>野菜追加 or サプリ</strong></p>
+                                        <p style="font-size: 0.75rem; margin-bottom: 0; opacity: 0.7;">出典: <a href="https://www.sciencedirect.com/science/article/abs/pii/S875632822100048X">Bone 2021</a></p>
+                                    </div>
+                                </div>
+
+                                <!-- 右カラム -->
+                                <div class="col-md-6">
+                                    <div class="meal-card" style="border-left: 4px solid #74b9ff;">
+                                        <h5 style="color: #0984e3; margin-bottom: 0.75rem;"><i class="bi bi-flower1 me-2"></i>ビタミンC</h5>
+                                        <p style="font-size: 0.9rem; margin-bottom: 0.5rem;"><strong>効果：</strong>コラーゲン合成（腱・靱帯修復）、ゼラチン+Cで合成<strong>2倍</strong></p>
+                                        <p style="font-size: 0.9rem; margin-bottom: 0.5rem;"><strong>目安：</strong>100mg/日（運動者は200mg+）</p>
+                                        <p style="font-size: 0.9rem; margin-bottom: 0.5rem; color: #00b894;"><strong>📍 判定：</strong>ブロッコリー100g=120mg → 野菜食べてればOK</p>
+                                        <p style="font-size: 0.75rem; margin-bottom: 0; opacity: 0.7;">出典: <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC5183725/">Am J Clin Nutr 2017</a></p>
+                                    </div>
+
+                                    <div class="meal-card" style="border-left: 4px solid #e17055;">
+                                        <h5 style="color: #e17055; margin-bottom: 0.75rem;"><i class="bi bi-heart-pulse me-2"></i>鉄</h5>
+                                        <p style="font-size: 0.9rem; margin-bottom: 0.5rem;"><strong>効果：</strong>酸素運搬（ヘモグロビン・ミオグロビン）、不足でVO₂max低下</p>
+                                        <p style="font-size: 0.9rem; margin-bottom: 0.5rem;"><strong>目安：</strong>男性8mg/日、フェリチン30ng/mL以上</p>
+                                        <p style="font-size: 0.9rem; margin-bottom: 0.5rem; color: #00b894;"><strong>📍 判定：</strong>牛肉200g=5mg → 肉魚食べてればOK</p>
+                                        <p style="font-size: 0.75rem; margin-bottom: 0; opacity: 0.7;">出典: <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC10608302/">Int J Environ Res Public Health 2023</a></p>
+                                    </div>
+
+                                    <div class="meal-card" style="border-left: 4px solid #fd79a8;">
+                                        <h5 style="color: #fd79a8; margin-bottom: 0.75rem;"><i class="bi bi-shield-check me-2"></i>亜鉛</h5>
+                                        <p style="font-size: 0.9rem; margin-bottom: 0.5rem;"><strong>効果：</strong>テストステロン合成・タンパク質合成</p>
+                                        <p style="font-size: 0.9rem; margin-bottom: 0.5rem;"><strong>目安：</strong>11mg/日</p>
+                                        <p style="font-size: 0.9rem; margin-bottom: 0.5rem; color: #00b894;"><strong>📍 判定：</strong>牛肉200g=9mg → 肉食べてればOK</p>
+                                        <p style="font-size: 0.75rem; margin-bottom: 0; opacity: 0.7;">出典: <a href="https://pubmed.ncbi.nlm.nih.gov/36577241/">J Trace Elem Med Biol 2023</a></p>
+                                    </div>
+
+                                    <div class="meal-card" style="border-left: 4px solid #00cec9;">
+                                        <h5 style="color: #00cec9; margin-bottom: 0.75rem;"><i class="bi bi-activity me-2"></i>カリウム</h5>
+                                        <p style="font-size: 0.9rem; margin-bottom: 0.5rem;"><strong>効果：</strong>筋収縮・弛緩の電気信号伝達、不足で筋けいれん</p>
+                                        <p style="font-size: 0.9rem; margin-bottom: 0.5rem;"><strong>目安：</strong>2,600mg/日</p>
+                                        <p style="font-size: 0.9rem; margin-bottom: 0.5rem; color: #fdcb6e;"><strong>📍 判定：</strong>バナナ1本=360mg、納豆=330mg → 意識して摂取</p>
+                                        <p style="font-size: 0.75rem; margin-bottom: 0; opacity: 0.7;">出典: <a href="https://www.sciencedaily.com/releases/2021/03/210318101536.htm">J Int Soc Sports Nutr 2021</a></p>
+                                    </div>
+
+                                    <div class="meal-card" style="border-left: 4px solid #dfe6e9;">
+                                        <h5 style="color: #636e72; margin-bottom: 0.75rem;"><i class="bi bi-building me-2"></i>カルシウム</h5>
+                                        <p style="font-size: 0.9rem; margin-bottom: 0.5rem;"><strong>効果：</strong>筋収縮のトリガー（Ca²⁺シグナル）、骨密度維持</p>
+                                        <p style="font-size: 0.9rem; margin-bottom: 0.5rem;"><strong>目安：</strong>800mg/日</p>
+                                        <p style="font-size: 0.9rem; margin-bottom: 0.5rem; color: #e17055;"><strong>📍 判定：</strong>ヨーグルト=120mg、豆腐=120mg → <strong>やや不足、サプリ検討</strong></p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- ビタミンB6 -->
+                            <div class="meal-card mt-3" style="border-left: 4px solid #74b9ff;">
+                                <h5 style="color: #74b9ff; margin-bottom: 0.75rem;"><i class="bi bi-gear me-2"></i>ビタミンB6（筋合成の工具）</h5>
+                                <p style="font-size: 0.9rem; margin-bottom: 0.5rem;"><strong>効果：</strong>アミノ酸代謝の補酵素、タンパク質→筋肉の変換に必須</p>
+                                <p style="font-size: 0.9rem; margin-bottom: 0.5rem;"><strong>目安：</strong>1.4mg/日</p>
+                                <p style="font-size: 0.9rem; margin-bottom: 0; color: #00b894;"><strong>📍 判定：</strong>鶏むね100g=0.6mg、サバ缶=0.5mg → 現メニューで十分</p>
+                            </div>
+
+                        </div>
+
                     </div>
                 </div>
 
@@ -1079,14 +1195,28 @@
                     <div class="schedule-card">
                         <div class="schedule-title"><i class="bi bi-calendar-week"></i>週間スケジュール</div>
                         <div class="schedule-grid">
-                            <div class="schedule-day gym"><div class="schedule-day-label">日</div><div class="schedule-day-type">💪</div></div>
-                            <div class="schedule-day rest"><div class="schedule-day-label">月</div><div class="schedule-day-type">回復</div></div>
-                            <div class="schedule-day gym"><div class="schedule-day-label">火</div><div class="schedule-day-type">💪</div></div>
-                            <div class="schedule-day rest"><div class="schedule-day-label">水</div><div class="schedule-day-type">回復</div></div>
-                            <div class="schedule-day gym"><div class="schedule-day-label">木</div><div class="schedule-day-type">💪</div></div>
-                            <div class="schedule-day off"><div class="schedule-day-label">金</div><div class="schedule-day-type">不可</div></div>
-                            <div class="schedule-day off"><div class="schedule-day-label">土</div><div class="schedule-day-type">買出</div></div>
+                            <div class="schedule-day gym"><div class="schedule-day-label">日</div><div class="schedule-day-type">💪🚶</div></div>
+                            <div class="schedule-day rest"><div class="schedule-day-label">月</div><div class="schedule-day-type">🚶</div></div>
+                            <div class="schedule-day gym"><div class="schedule-day-label">火</div><div class="schedule-day-type">💪🚶</div></div>
+                            <div class="schedule-day rest"><div class="schedule-day-label">水</div><div class="schedule-day-type">🚶</div></div>
+                            <div class="schedule-day gym"><div class="schedule-day-label">木</div><div class="schedule-day-type">💪🚶</div></div>
+                            <div class="schedule-day off"><div class="schedule-day-label">金</div><div class="schedule-day-type">🚶</div></div>
+                            <div class="schedule-day off"><div class="schedule-day-label">土</div><div class="schedule-day-type">🚶</div></div>
                         </div>
+                        <div style="font-size: 0.75rem; color: #636e72; margin-top: 0.75rem; text-align: center;">
+                            💪 = ジム（0:00〜1:00）｜🚶 = ウォーキング（30〜60分/日）
+                        </div>
+                    </div>
+
+                    <div class="tips-card" style="background: linear-gradient(135deg, #55efc4, #00b894); border-left: none;">
+                        <div class="tips-title" style="color: white;"><i class="bi bi-signpost-2"></i>ウォーキングの効果</div>
+                        <div style="font-size: 0.85rem; color: white;">
+                            <p style="margin-bottom: 0.5rem;"><strong>1時間で約300kcal消費</strong>（82kg基準）</p>
+                            <p style="margin-bottom: 0.5rem;"><strong>脂肪燃焼比率が高い</strong>：ランニングより脂肪を優先的に使用</p>
+                            <p style="margin-bottom: 0.5rem;"><strong>食欲抑制効果</strong>：ランニングより運動後の空腹感が少ない</p>
+                            <p style="margin-bottom: 0;"><strong>ゆっくりでもOK</strong>：時間が重要、速度は二の次</p>
+                        </div>
+                        <p style="font-size: 0.7rem; opacity: 0.8; margin-top: 0.5rem; margin-bottom: 0; color: white;">出典: Int J Obes 2012, Med Sci Sports Exerc 2015</p>
                     </div>
 
                     <div class="night-tips-card">
@@ -1214,92 +1344,16 @@
                         </div>
                     </div>
 
-                    <!-- 栄養素ファクトシート -->
-                    <div class="schedule-card" style="background: #2d3436; color: white; margin-top: 1.5rem;">
-                        <div class="schedule-title" style="color: #ffeaa7;"><i class="bi bi-journal-medical"></i>栄養素ファクトシート（科学的根拠）</div>
-                        <p style="font-size: 0.75rem; opacity: 0.8; margin-bottom: 1rem;">サプリ検討用。研究論文に基づく情報のみ記載。</p>
-
-                        <div style="font-size: 0.8rem; border-bottom: 1px solid #636e72; padding-bottom: 0.75rem; margin-bottom: 0.75rem;">
-                            <p style="margin-bottom: 0.3rem;"><strong style="color: #ff7675;">オメガ3（EPA/DHA）</strong></p>
-                            <p style="margin-bottom: 0.3rem; opacity: 0.9;">筋タンパク合成を<strong>50%増加</strong>（mTOR活性化）</p>
-                            <p style="margin-bottom: 0.3rem; opacity: 0.8;">目安：1.5〜3g/日</p>
-                            <p style="margin-bottom: 0; opacity: 0.7;">📍 サバ缶1缶=約1.5g → 週3〜4缶で足りる</p>
-                            <p style="margin-bottom: 0; opacity: 0.6; font-size: 0.7rem;">出典: <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC3021432/" style="color: #74b9ff;">Am J Clin Nutr 2011</a></p>
-                        </div>
-
-                        <div style="font-size: 0.8rem; border-bottom: 1px solid #636e72; padding-bottom: 0.75rem; margin-bottom: 0.75rem;">
-                            <p style="margin-bottom: 0.3rem;"><strong style="color: #a29bfe;">クレアチン</strong></p>
-                            <p style="margin-bottom: 0.3rem; opacity: 0.9;">減量中の筋肉量維持に有効（脂肪なしで2-4lbs増）</p>
-                            <p style="margin-bottom: 0.3rem; opacity: 0.9;">カロリー制限中の筋肉減少を<strong>40%軽減</strong></p>
-                            <p style="margin-bottom: 0.3rem; opacity: 0.8;">目安：3〜5g/日（ローディング不要）</p>
-                            <p style="margin-bottom: 0; opacity: 0.7;">📍 食事で摂取困難 → <strong>サプリ推奨</strong></p>
-                            <p style="margin-bottom: 0; opacity: 0.6; font-size: 0.7rem;">出典: <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC7739317/" style="color: #74b9ff;">J Funct Morphol Kinesiol 2020</a></p>
-                        </div>
-
-                        <div style="font-size: 0.8rem; border-bottom: 1px solid #636e72; padding-bottom: 0.75rem; margin-bottom: 0.75rem;">
-                            <p style="margin-bottom: 0.3rem;"><strong style="color: #fdcb6e;">ビタミンC</strong></p>
-                            <p style="margin-bottom: 0.3rem; opacity: 0.9;">コラーゲン合成に必須（腱・靱帯の修復）</p>
-                            <p style="margin-bottom: 0.3rem; opacity: 0.9;">ゼラチン15g+Cで合成<strong>2倍</strong></p>
-                            <p style="margin-bottom: 0.3rem; opacity: 0.8;">目安：100mg/日（運動者は200mg+）</p>
-                            <p style="margin-bottom: 0; opacity: 0.7;">📍 ブロッコリー100g=120mg → 野菜食べてればOK</p>
-                            <p style="margin-bottom: 0; opacity: 0.6; font-size: 0.7rem;">出典: <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC5183725/" style="color: #74b9ff;">Am J Clin Nutr 2017</a></p>
-                        </div>
-
-                        <div style="font-size: 0.8rem; border-bottom: 1px solid #636e72; padding-bottom: 0.75rem; margin-bottom: 0.75rem;">
-                            <p style="margin-bottom: 0.3rem;"><strong style="color: #e17055;">鉄</strong></p>
-                            <p style="margin-bottom: 0.3rem; opacity: 0.9;">酸素運搬（ヘモグロビン・ミオグロビン）</p>
-                            <p style="margin-bottom: 0.3rem; opacity: 0.9;">不足でVO₂max低下・疲労感増加</p>
-                            <p style="margin-bottom: 0.3rem; opacity: 0.8;">目安：男性8mg/日、フェリチン30ng/mL以上</p>
-                            <p style="margin-bottom: 0; opacity: 0.7;">📍 牛肉200g=5mg、サバ缶=2mg → 肉魚食べてればOK</p>
-                            <p style="margin-bottom: 0; opacity: 0.6; font-size: 0.7rem;">出典: <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC10608302/" style="color: #74b9ff;">Int J Environ Res Public Health 2023</a></p>
-                        </div>
-
-                        <div style="font-size: 0.8rem; border-bottom: 1px solid #636e72; padding-bottom: 0.75rem; margin-bottom: 0.75rem;">
-                            <p style="margin-bottom: 0.3rem;"><strong style="color: #00cec9;">カリウム</strong></p>
-                            <p style="margin-bottom: 0.3rem; opacity: 0.9;">筋収縮・弛緩の電気信号伝達</p>
-                            <p style="margin-bottom: 0.3rem; opacity: 0.9;">不足で筋けいれん・脱力感</p>
-                            <p style="margin-bottom: 0.3rem; opacity: 0.8;">目安：2,600mg/日</p>
-                            <p style="margin-bottom: 0; opacity: 0.7;">📍 バナナ1本=360mg、納豆=330mg → 意識して摂取</p>
-                            <p style="margin-bottom: 0; opacity: 0.6; font-size: 0.7rem;">出典: <a href="https://www.sciencedaily.com/releases/2021/03/210318101536.htm" style="color: #74b9ff;">J Int Soc Sports Nutr 2021</a></p>
-                        </div>
-
-                        <div style="font-size: 0.8rem; border-bottom: 1px solid #636e72; padding-bottom: 0.75rem; margin-bottom: 0.75rem;">
-                            <p style="margin-bottom: 0.3rem;"><strong style="color: #dfe6e9;">カルシウム</strong></p>
-                            <p style="margin-bottom: 0.3rem; opacity: 0.9;">筋収縮のトリガー（Ca²⁺シグナル）</p>
-                            <p style="margin-bottom: 0.3rem; opacity: 0.9;">ビタミンDと協働で骨密度維持</p>
-                            <p style="margin-bottom: 0.3rem; opacity: 0.8;">目安：800mg/日</p>
-                            <p style="margin-bottom: 0; opacity: 0.7;">📍 ヨーグルト=120mg、豆腐1丁=120mg → やや不足気味</p>
-                        </div>
-
-                        <div style="font-size: 0.8rem; border-bottom: 1px solid #636e72; padding-bottom: 0.75rem; margin-bottom: 0.75rem;">
-                            <p style="margin-bottom: 0.3rem;"><strong style="color: #fd79a8;">亜鉛</strong></p>
-                            <p style="margin-bottom: 0.3rem; opacity: 0.9;">テストステロン合成・タンパク質合成</p>
-                            <p style="margin-bottom: 0.3rem; opacity: 0.9;">不足でテストステロン低下・筋力低下</p>
-                            <p style="margin-bottom: 0.3rem; opacity: 0.8;">目安：11mg/日</p>
-                            <p style="margin-bottom: 0; opacity: 0.7;">📍 牛肉200g=9mg、納豆=1mg → 肉食べてればOK</p>
-                            <p style="margin-bottom: 0; opacity: 0.6; font-size: 0.7rem;">出典: <a href="https://pubmed.ncbi.nlm.nih.gov/36577241/" style="color: #74b9ff;">J Trace Elem Med Biol 2023</a></p>
-                        </div>
-
-                        <div style="font-size: 0.8rem;">
-                            <p style="margin-bottom: 0.3rem;"><strong style="color: #00b894;">マグネシウム</strong></p>
-                            <p style="margin-bottom: 0.3rem; opacity: 0.9;">ATP合成・mTOR活性化・筋収縮</p>
-                            <p style="margin-bottom: 0.3rem; opacity: 0.9;">不足で筋合成効率低下・睡眠の質低下</p>
-                            <p style="margin-bottom: 0.3rem; opacity: 0.8;">目安：340mg/日</p>
-                            <p style="margin-bottom: 0; opacity: 0.7;">📍 現メニューで約150mg → <strong>サプリ or 野菜追加推奨</strong></p>
-                            <p style="margin-bottom: 0; opacity: 0.6; font-size: 0.7rem;">出典: <a href="https://www.sciencedirect.com/science/article/abs/pii/S875632822100048X" style="color: #74b9ff;">Bone 2021</a></p>
-                        </div>
-                    </div>
-
-                    <!-- サプリ判定サマリー -->
-                    <div class="tips-card" style="background: linear-gradient(135deg, #6c5ce7, #a29bfe); border-left: none; margin-top: 1rem;">
+                    <!-- サプリ判定サマリー（詳細は栄養素タブ） -->
+                    <div class="tips-card" style="background: linear-gradient(135deg, #6c5ce7, #a29bfe); border-left: none; margin-top: 1.5rem;">
                         <div class="tips-title" style="color: white;"><i class="bi bi-capsule"></i>サプリ検討まとめ</div>
                         <div style="font-size: 0.85rem; color: white;">
-                            <p style="margin-bottom: 0.5rem;"><strong>✅ 食事で足りてる</strong></p>
-                            <p style="margin-bottom: 0.75rem; opacity: 0.9; padding-left: 1rem;">オメガ3、ビタミンB6、鉄、亜鉛</p>
-                            <p style="margin-bottom: 0.5rem;"><strong>⚠️ 野菜追加で解決</strong></p>
-                            <p style="margin-bottom: 0.75rem; opacity: 0.9; padding-left: 1rem;">マグネシウム、ビタミンC、カリウム</p>
-                            <p style="margin-bottom: 0.5rem;"><strong>💊 サプリ推奨</strong></p>
-                            <p style="margin-bottom: 0; opacity: 0.9; padding-left: 1rem;">クレアチン（3-5g/日）、ビタミンD（冬季）、カルシウム</p>
+                            <p style="margin-bottom: 0.5rem;"><strong>✅ 食事で足りてる</strong>：オメガ3、B6、鉄、亜鉛</p>
+                            <p style="margin-bottom: 0.5rem;"><strong>⚠️ 野菜追加で解決</strong>：Mg、ビタミンC、カリウム</p>
+                            <p style="margin-bottom: 0.75rem;"><strong>💊 サプリ推奨</strong>：クレアチン、ビタミンD（冬季）、カルシウム</p>
+                            <button class="btn btn-light btn-sm w-100" onclick="document.getElementById('nutrition-tab').click();">
+                                <i class="bi bi-journal-medical me-1"></i>詳細な科学的根拠を見る
+                            </button>
                         </div>
                     </div>
                 </div>
