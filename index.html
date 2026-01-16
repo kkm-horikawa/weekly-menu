@@ -151,6 +151,7 @@
                 <li class="nav-item" role="presentation"><button class="nav-link gym-day" id="thu-tab" data-bs-toggle="pill" data-bs-target="#thursday" type="button">木</button></li>
                 <li class="nav-item" role="presentation"><button class="nav-link" id="fri-tab" data-bs-toggle="pill" data-bs-target="#friday" type="button">金</button></li>
                 <li class="nav-item" role="presentation"><button class="nav-link" id="sat-tab" data-bs-toggle="pill" data-bs-target="#saturday" type="button">土</button></li>
+                <li class="nav-item" role="presentation"><button class="nav-link" id="recipe-tab" data-bs-toggle="pill" data-bs-target="#recipes" type="button" style="background: linear-gradient(135deg, #e17055, #fdcb6e); color: white; margin-left: 1rem;">📖 レシピ</button></li>
             </ul>
         </div>
     </nav>
@@ -789,6 +790,285 @@
                                     </div>
                                 </div>
                             </div>
+                        </div>
+
+                        <!-- レシピタブ -->
+                        <div class="tab-pane fade" id="recipes" role="tabpanel">
+                            <div class="day-header" style="background: linear-gradient(135deg, #e17055, #fdcb6e);">
+                                <h2 class="day-title"><i class="bi bi-book me-2"></i>減量×筋合成レシピ集</h2>
+                                <p class="day-subtitle mb-0">科学的根拠に基づいた作り置き＆時短レシピ</p>
+                            </div>
+
+                            <!-- 味噌汁レシピ -->
+                            <div class="meal-card" style="border-left: 4px solid #e17055;">
+                                <div class="meal-header">
+                                    <div class="meal-icon" style="background: linear-gradient(135deg, #e17055, #fdcb6e);">🍲</div>
+                                    <div>
+                                        <div class="meal-time">作り置き推奨</div>
+                                        <div class="meal-title">筋合成サポート味噌汁</div>
+                                    </div>
+                                </div>
+                                <div style="background: #f8f9fa; padding: 1rem; border-radius: 8px; margin-bottom: 1rem;">
+                                    <p style="margin-bottom: 0.5rem; font-weight: 600;">📊 1杯あたり：約50kcal / タンパク質6g</p>
+                                    <div class="nutrient-tags" style="justify-content: flex-start;">
+                                        <span class="nutrient-tag nutrient-mg">Mg</span>
+                                        <span class="nutrient-tag nutrient-fiber">繊維</span>
+                                    </div>
+                                </div>
+                                <p style="font-size: 0.85rem; color: #636e72; margin-bottom: 0.75rem;"><strong>科学的根拠：</strong>味噌の発酵成分が脂肪蓄積を抑制（J Nutr Sci Vitaminol 2013）。豆腐でタンパク質、ほうれん草でMg・硝酸塩を補給。</p>
+                                <p style="font-weight: 600; margin-bottom: 0.5rem;">材料（4杯分・作り置き）：</p>
+                                <ul class="meal-items" style="margin-bottom: 1rem;">
+                                    <li><span class="item-name">絹豆腐 1丁（300g）</span><span class="item-protein">15g</span></li>
+                                    <li><span class="item-name">冷凍ほうれん草 100g</span><div class="nutrient-tags"><span class="nutrient-tag nutrient-mg">Mg</span></div></li>
+                                    <li><span class="item-name">乾燥わかめ 大さじ2</span><div class="nutrient-tags"><span class="nutrient-tag nutrient-fiber">繊維</span></div></li>
+                                    <li><span class="item-name">味噌 大さじ3</span></li>
+                                    <li><span class="item-name">だしパック or 顆粒だし</span></li>
+                                    <li><span class="item-name">水 800ml</span></li>
+                                </ul>
+                                <p style="font-weight: 600; margin-bottom: 0.5rem;">作り方：</p>
+                                <ol style="font-size: 0.9rem; padding-left: 1.25rem; margin-bottom: 0;">
+                                    <li>鍋に水とだしを入れ沸騰させる</li>
+                                    <li>豆腐を手で崩しながら入れる（包丁不要）</li>
+                                    <li>冷凍ほうれん草をそのまま投入</li>
+                                    <li>乾燥わかめを入れる</li>
+                                    <li>火を止めて味噌を溶く</li>
+                                    <li>冷蔵で3日保存可能。朝レンジで温めるだけ</li>
+                                </ol>
+                            </div>
+
+                            <!-- レシピ2 -->
+                            <div class="meal-card" style="border-left: 4px solid #00b894;">
+                                <div class="meal-header">
+                                    <div class="meal-icon" style="background: linear-gradient(135deg, #00b894, #55efc4);">🥬</div>
+                                    <div>
+                                        <div class="meal-time">レンジ3分</div>
+                                        <div class="meal-title">ほうれん草とえのきのレンジ蒸し</div>
+                                    </div>
+                                </div>
+                                <div style="background: #f8f9fa; padding: 1rem; border-radius: 8px; margin-bottom: 1rem;">
+                                    <p style="margin-bottom: 0.5rem; font-weight: 600;">📊 約30kcal / タンパク質3g</p>
+                                    <div class="nutrient-tags" style="justify-content: flex-start;">
+                                        <span class="nutrient-tag nutrient-mg">Mg</span>
+                                        <span class="nutrient-tag nutrient-fiber">繊維</span>
+                                    </div>
+                                </div>
+                                <p style="font-size: 0.85rem; color: #636e72; margin-bottom: 0.75rem;"><strong>科学的根拠：</strong>ほうれん草の硝酸塩が筋肉の酸素効率を5%向上（Cell Metab 2011）。きのこの食物繊維で満腹感持続。</p>
+                                <p style="font-weight: 600; margin-bottom: 0.5rem;">材料：</p>
+                                <ul class="meal-items" style="margin-bottom: 1rem;">
+                                    <li><span class="item-name">冷凍ほうれん草 50g</span></li>
+                                    <li><span class="item-name">えのき 1/2袋</span></li>
+                                    <li><span class="item-name">ポン酢 大さじ1</span></li>
+                                </ul>
+                                <p style="font-weight: 600; margin-bottom: 0.5rem;">作り方：</p>
+                                <ol style="font-size: 0.9rem; padding-left: 1.25rem; margin-bottom: 0;">
+                                    <li>耐熱容器にえのき→冷凍ほうれん草の順に入れる</li>
+                                    <li>ラップしてレンジ600W 3分</li>
+                                    <li>ポン酢をかけて完成</li>
+                                </ol>
+                            </div>
+
+                            <!-- レシピ3 -->
+                            <div class="meal-card" style="border-left: 4px solid #74b9ff;">
+                                <div class="meal-header">
+                                    <div class="meal-icon" style="background: linear-gradient(135deg, #74b9ff, #0984e3);">🐔</div>
+                                    <div>
+                                        <div class="meal-time">フライパン10分</div>
+                                        <div class="meal-title">鶏むね肉の塩麹焼き</div>
+                                    </div>
+                                </div>
+                                <div style="background: #f8f9fa; padding: 1rem; border-radius: 8px; margin-bottom: 1rem;">
+                                    <p style="margin-bottom: 0.5rem; font-weight: 600;">📊 約180kcal / タンパク質35g</p>
+                                    <div class="nutrient-tags" style="justify-content: flex-start;">
+                                        <span class="nutrient-tag nutrient-b6">B6</span>
+                                    </div>
+                                </div>
+                                <p style="font-size: 0.85rem; color: #636e72; margin-bottom: 0.75rem;"><strong>科学的根拠：</strong>鶏むね100gにB6が0.6mg。塩麹の酵素でタンパク質が分解され柔らかく＆消化吸収率UP。</p>
+                                <p style="font-weight: 600; margin-bottom: 0.5rem;">材料：</p>
+                                <ul class="meal-items" style="margin-bottom: 1rem;">
+                                    <li><span class="item-name">鶏むね肉 1枚（250g）</span></li>
+                                    <li><span class="item-name">塩麹 大さじ2</span></li>
+                                </ul>
+                                <p style="font-weight: 600; margin-bottom: 0.5rem;">作り方：</p>
+                                <ol style="font-size: 0.9rem; padding-left: 1.25rem; margin-bottom: 0;">
+                                    <li>むね肉に塩麹を揉み込む（前夜漬け込みがベスト）</li>
+                                    <li>フライパンに薄く油をひき、弱〜中火で両面焼く</li>
+                                    <li>蓋をして5分蒸し焼き</li>
+                                    <li>スライスして完成。作り置きで冷蔵3日</li>
+                                </ol>
+                            </div>
+
+                            <!-- レシピ4 -->
+                            <div class="meal-card" style="border-left: 4px solid #a29bfe;">
+                                <div class="meal-header">
+                                    <div class="meal-icon" style="background: linear-gradient(135deg, #a29bfe, #6c5ce7);">🐟</div>
+                                    <div>
+                                        <div class="meal-time">調理0分</div>
+                                        <div class="meal-title">鯖缶納豆丼</div>
+                                    </div>
+                                </div>
+                                <div style="background: #f8f9fa; padding: 1rem; border-radius: 8px; margin-bottom: 1rem;">
+                                    <p style="margin-bottom: 0.5rem; font-weight: 600;">📊 約450kcal / タンパク質35g（ご飯込み）</p>
+                                    <div class="nutrient-tags" style="justify-content: flex-start;">
+                                        <span class="nutrient-tag nutrient-mg">Mg</span>
+                                        <span class="nutrient-tag nutrient-b6">B6</span>
+                                        <span class="nutrient-tag nutrient-zn">Zn</span>
+                                    </div>
+                                </div>
+                                <p style="font-size: 0.85rem; color: #636e72; margin-bottom: 0.75rem;"><strong>科学的根拠：</strong>鯖のEPA/DHAが筋タンパク合成を促進（Am J Clin Nutr 2011）。納豆のビタミンKが骨代謝をサポート。</p>
+                                <p style="font-weight: 600; margin-bottom: 0.5rem;">材料：</p>
+                                <ul class="meal-items" style="margin-bottom: 1rem;">
+                                    <li><span class="item-name">サバ水煮缶 1缶</span></li>
+                                    <li><span class="item-name">納豆 1パック</span></li>
+                                    <li><span class="item-name">ご飯 150g</span></li>
+                                    <li><span class="item-name">刻みネギ・醤油 適量</span></li>
+                                </ul>
+                                <p style="font-weight: 600; margin-bottom: 0.5rem;">作り方：</p>
+                                <ol style="font-size: 0.9rem; padding-left: 1.25rem; margin-bottom: 0;">
+                                    <li>ご飯に鯖缶（汁ごと）をのせる</li>
+                                    <li>納豆をのせる</li>
+                                    <li>ネギと醤油で完成。所要時間1分</li>
+                                </ol>
+                            </div>
+
+                            <!-- レシピ5 -->
+                            <div class="meal-card" style="border-left: 4px solid #fdcb6e;">
+                                <div class="meal-header">
+                                    <div class="meal-icon" style="background: linear-gradient(135deg, #fdcb6e, #f39c12);">🥦</div>
+                                    <div>
+                                        <div class="meal-time">レンジ2分</div>
+                                        <div class="meal-title">ブロッコリーの塩昆布和え</div>
+                                    </div>
+                                </div>
+                                <div style="background: #f8f9fa; padding: 1rem; border-radius: 8px; margin-bottom: 1rem;">
+                                    <p style="margin-bottom: 0.5rem; font-weight: 600;">📊 約35kcal / タンパク質4g</p>
+                                    <div class="nutrient-tags" style="justify-content: flex-start;">
+                                        <span class="nutrient-tag nutrient-mg">Mg</span>
+                                        <span class="nutrient-tag nutrient-fiber">繊維</span>
+                                    </div>
+                                </div>
+                                <p style="font-size: 0.85rem; color: #636e72; margin-bottom: 0.75rem;"><strong>科学的根拠：</strong>ブロッコリーはビタミンC含有量トップクラス。コラーゲン合成を促進し腱・靭帯の回復をサポート。</p>
+                                <p style="font-weight: 600; margin-bottom: 0.5rem;">材料：</p>
+                                <ul class="meal-items" style="margin-bottom: 1rem;">
+                                    <li><span class="item-name">冷凍ブロッコリー 100g</span></li>
+                                    <li><span class="item-name">塩昆布 大さじ1</span></li>
+                                    <li><span class="item-name">ごま油 小さじ1/2</span></li>
+                                </ul>
+                                <p style="font-weight: 600; margin-bottom: 0.5rem;">作り方：</p>
+                                <ol style="font-size: 0.9rem; padding-left: 1.25rem; margin-bottom: 0;">
+                                    <li>冷凍ブロッコリーをレンジ600W 2分</li>
+                                    <li>塩昆布とごま油を和えて完成</li>
+                                </ol>
+                            </div>
+
+                            <!-- レシピ6 -->
+                            <div class="meal-card" style="border-left: 4px solid #fd79a8;">
+                                <div class="meal-header">
+                                    <div class="meal-icon" style="background: linear-gradient(135deg, #fd79a8, #e84393);">🍳</div>
+                                    <div>
+                                        <div class="meal-time">レンジ5分</div>
+                                        <div class="meal-title">オートミール卵雑炊</div>
+                                    </div>
+                                </div>
+                                <div style="background: #f8f9fa; padding: 1rem; border-radius: 8px; margin-bottom: 1rem;">
+                                    <p style="margin-bottom: 0.5rem; font-weight: 600;">📊 約250kcal / タンパク質15g</p>
+                                    <div class="nutrient-tags" style="justify-content: flex-start;">
+                                        <span class="nutrient-tag nutrient-mg">Mg</span>
+                                        <span class="nutrient-tag nutrient-fiber">繊維</span>
+                                        <span class="nutrient-tag nutrient-zn">Zn</span>
+                                    </div>
+                                </div>
+                                <p style="font-size: 0.85rem; color: #636e72; margin-bottom: 0.75rem;"><strong>科学的根拠：</strong>オートミールのβグルカンが血糖値上昇を緩やかに（GI値55）。インスリンスパイクを抑え脂肪蓄積を防ぐ。</p>
+                                <p style="font-weight: 600; margin-bottom: 0.5rem;">材料：</p>
+                                <ul class="meal-items" style="margin-bottom: 1rem;">
+                                    <li><span class="item-name">オートミール 30g</span></li>
+                                    <li><span class="item-name">卵 1個</span></li>
+                                    <li><span class="item-name">水 150ml</span></li>
+                                    <li><span class="item-name">白だし 大さじ1</span></li>
+                                    <li><span class="item-name">刻みネギ 適量</span></li>
+                                </ul>
+                                <p style="font-weight: 600; margin-bottom: 0.5rem;">作り方：</p>
+                                <ol style="font-size: 0.9rem; padding-left: 1.25rem; margin-bottom: 0;">
+                                    <li>耐熱容器にオートミール・水・白だしを入れレンジ2分</li>
+                                    <li>溶き卵を回し入れ、さらにレンジ1分</li>
+                                    <li>ネギをのせて完成</li>
+                                </ol>
+                            </div>
+
+                            <!-- レシピ7 -->
+                            <div class="meal-card" style="border-left: 4px solid #00cec9;">
+                                <div class="meal-header">
+                                    <div class="meal-icon" style="background: linear-gradient(135deg, #00cec9, #81ecec);">🍄</div>
+                                    <div>
+                                        <div class="meal-time">フライパン5分</div>
+                                        <div class="meal-title">きのこのバター醤油炒め</div>
+                                    </div>
+                                </div>
+                                <div style="background: #f8f9fa; padding: 1rem; border-radius: 8px; margin-bottom: 1rem;">
+                                    <p style="margin-bottom: 0.5rem; font-weight: 600;">📊 約50kcal / タンパク質3g</p>
+                                    <div class="nutrient-tags" style="justify-content: flex-start;">
+                                        <span class="nutrient-tag nutrient-d">D</span>
+                                        <span class="nutrient-tag nutrient-fiber">繊維</span>
+                                    </div>
+                                </div>
+                                <p style="font-size: 0.85rem; color: #636e72; margin-bottom: 0.75rem;"><strong>科学的根拠：</strong>きのこは食物繊維豊富で満腹感◎。干し椎茸はビタミンD含有（日光でさらに増加）。</p>
+                                <p style="font-weight: 600; margin-bottom: 0.5rem;">材料：</p>
+                                <ul class="meal-items" style="margin-bottom: 1rem;">
+                                    <li><span class="item-name">えのき 1袋</span></li>
+                                    <li><span class="item-name">しめじ 1/2袋</span></li>
+                                    <li><span class="item-name">バター 5g</span></li>
+                                    <li><span class="item-name">醤油 大さじ1</span></li>
+                                </ul>
+                                <p style="font-weight: 600; margin-bottom: 0.5rem;">作り方：</p>
+                                <ol style="font-size: 0.9rem; padding-left: 1.25rem; margin-bottom: 0;">
+                                    <li>きのこをほぐす</li>
+                                    <li>フライパンでバターを溶かしきのこを炒める</li>
+                                    <li>しんなりしたら醤油を回しかけて完成</li>
+                                </ol>
+                            </div>
+
+                            <!-- レシピ8 -->
+                            <div class="meal-card" style="border-left: 4px solid #55efc4;">
+                                <div class="meal-header">
+                                    <div class="meal-icon" style="background: linear-gradient(135deg, #55efc4, #00b894);">🥚</div>
+                                    <div>
+                                        <div class="meal-time">作り置き推奨</div>
+                                        <div class="meal-title">味玉（半熟）</div>
+                                    </div>
+                                </div>
+                                <div style="background: #f8f9fa; padding: 1rem; border-radius: 8px; margin-bottom: 1rem;">
+                                    <p style="margin-bottom: 0.5rem; font-weight: 600;">📊 1個約80kcal / タンパク質7g</p>
+                                    <div class="nutrient-tags" style="justify-content: flex-start;">
+                                        <span class="nutrient-tag nutrient-d">D</span>
+                                        <span class="nutrient-tag nutrient-b6">B6</span>
+                                    </div>
+                                </div>
+                                <p style="font-size: 0.85rem; color: #636e72; margin-bottom: 0.75rem;"><strong>科学的根拠：</strong>卵は完全栄養食。ビタミンD、B群、良質な脂質を含む。コスパ最強のタンパク源。</p>
+                                <p style="font-weight: 600; margin-bottom: 0.5rem;">材料：</p>
+                                <ul class="meal-items" style="margin-bottom: 1rem;">
+                                    <li><span class="item-name">卵 6個</span></li>
+                                    <li><span class="item-name">めんつゆ（3倍濃縮） 100ml</span></li>
+                                    <li><span class="item-name">水 100ml</span></li>
+                                </ul>
+                                <p style="font-weight: 600; margin-bottom: 0.5rem;">作り方：</p>
+                                <ol style="font-size: 0.9rem; padding-left: 1.25rem; margin-bottom: 0;">
+                                    <li>沸騰した湯に卵を入れ7分茹でる（半熟）</li>
+                                    <li>冷水で冷やして殻をむく</li>
+                                    <li>ジップロックにめんつゆ+水と卵を入れ、冷蔵庫で一晩</li>
+                                    <li>冷蔵5日保存可能</li>
+                                </ol>
+                            </div>
+
+                            <!-- レシピまとめ -->
+                            <div class="nutrition-summary" style="background: linear-gradient(135deg, #2d3436, #636e72); margin-top: 1rem;">
+                                <div class="nutrition-title" style="color: white;"><i class="bi bi-check-circle me-2"></i>レシピ選びの優先順位</div>
+                                <div style="font-size: 0.9rem; color: white;">
+                                    <p style="margin-bottom: 0.5rem;"><strong>1️⃣ カロリー最優先</strong>：同じ満足感なら低カロリーを選ぶ</p>
+                                    <p style="margin-bottom: 0.5rem;"><strong>2️⃣ タンパク質確保</strong>：1食20g以上を目指す</p>
+                                    <p style="margin-bottom: 0.5rem;"><strong>3️⃣ Mg・B6補給</strong>：筋合成に必須の「工具」</p>
+                                    <p style="margin-bottom: 0;"><strong>4️⃣ 味は誤差</strong>：カロリー同等なら美味しい方でOK</p>
+                                </div>
+                            </div>
+
                         </div>
 
                     </div>
